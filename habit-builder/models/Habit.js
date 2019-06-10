@@ -13,6 +13,9 @@ const HabitSchema = new Schema({
   category: {
     type: String,
   },
+  image: {
+    type: Buffer
+  },
   frequency: {
     type: String,
     required: true
