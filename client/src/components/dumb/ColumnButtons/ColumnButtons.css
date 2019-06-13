@@ -1,0 +1,35 @@
+.column-buttons{
+    /* Sizing & Positioning */
+    height: 100%;
+    width: 100%;
+    padding: 0px 0px 0px 15px;
+
+    /* Grid Setup */
+    display: grid;
+    grid-template-rows: repeat(5, 110px)
+}
+
+.column-tab{
+
+    /* Sizing & Positioning */
+    margin-bottom: 6px;
+    height: 100px;
+
+    /* Styling */
+    background-color: rgb(211, 211, 211);
+    border-radius: 10px 0px 0px 10px;
+    border-left: 2px solid rgb(211, 211, 211);
+
+    /* Setup for child elements */
+    display: flex;
+    justify-content: center;
+    text-align: left;
+    font-size: 12px;
+}
+
+.active{
+    background-color: white;
+    /* border-left: 2px solid rgb(211, 211, 211); */
+    z-index: 1;
+
+}
