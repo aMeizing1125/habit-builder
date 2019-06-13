@@ -1,0 +1,38 @@
+.habit-page{
+
+    /* Sizing & Positioning */
+    min-height: 1000px;
+
+    /* Setup for child elements */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    /* Testing */
+    /* background-color: red; */
+}
+
+.habit{
+
+    /* Sizing & Positioning */
+    width: 100%;
+    height: 120px;
+
+    /* Styling */
+    background-color: white;
+    border-top: 1px solid rgb(209, 209, 209);
+
+    /* Setup for child elements */
+    display: grid;
+    grid-template-columns: [habit-title] 100px [habit-progress] auto [habit complete] 80px;
+
+    /* Testing */
+}
+
+.habit-progress{
+    
+    /* Setup for child elements */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -1,0 +1,49 @@
+.grid{
+    /* Sizing & Positioning */
+    height: 100%;
+
+    /* Styling */
+    background-color: #f4f5f7; 
+
+    /* Setup for child elements */
+    display: grid;
+    grid-template-rows: [navbar] 120px [content] auto [bottom] 80px;
+    grid-template-columns: [left] 80px [middle] auto [right] 80px;
+}
+
+.page{
+
+    /* Sizing & Positioning */
+    grid-row-start: content;
+    grid-column-start: middle;
+
+    /* Setup for child elements */
+    display: flex;
+    justify-content: center;
+
+    /* Testing */
+    /* border: 2px solid red; */
+}
+
+.left-panel{
+    grid-row-start: content;
+    grid-column-start: left;
+}
+
+.content{
+    /* Sizing & Position */
+    width: 100%;
+    min-width: 200px;
+    height: 100%;
+
+    /* Styling */
+    background-color: white;
+    text-align: center;
+    border-radius: 0px 20px 20px 20px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+
+
+    /* Testing */
+    /* border: 2px solid blue; */
+}
+

@@ -1,0 +1,24 @@
+.button{
+    /* Sizing */
+    width: 40%;
+    min-width: 100px;
+    height: 60%;
+}
+
+.transparent{
+    /* Styling */
+    background-color: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.911);
+    border-radius: 10px;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+
+    /* Transition */
+    transition: all .1s ease-in-out;
+}
+
+.transparent:hover{
+    transform: scale(1.05);
+    background-color: rgba(0, 0, 0, 0.157);
+}
