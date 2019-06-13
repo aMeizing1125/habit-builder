@@ -3,12 +3,14 @@ const habitController = require("../../controllers/habitController");
 const userController = require("../../controllers/userController");
 
 //Check user id and password on login
-router.route("/user")
+router
+  .route("/user")
   .get(userController.findUser)
 
 //create User
-router.route("/newuser")
-  .create(userController.createUser)
+router
+  .route("/newuser")
+  .post(userController.createUser)
 
 // Add Habit
 router
