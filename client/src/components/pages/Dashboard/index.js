@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 // Importing components
 import ColumnButtons from 'components/dumb/ColumnButtons';
+import Navbar from 'components/dumb/Navbar';
 
 // Importing Dashboard Pages
 import Habit from 'components/pages/Dashboard/DashboardPages/Habit';
@@ -19,6 +20,7 @@ class Dashboard extends Component{
     render(){
         return(
             <div className="grid">
+                <Navbar />
                 <div className="nav-spacer"></div>
                 <div className="left-panel">
                     <ColumnButtons />
