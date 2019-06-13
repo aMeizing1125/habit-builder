@@ -15,4 +15,3 @@ Setup scripts in the package.json of the express server so:
 -When saving with nodemon, it will only auto-reload the backend, and not the react application.
 *This will prevent react from having to re-render the entire application any time an adjustment is made
 in the backend.
-
