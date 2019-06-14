@@ -7,8 +7,11 @@ import './Home.css';
 import Button from 'components/dumb/Button';
 
 class Home extends Component{
-    state = {};
+    state = {
+        signUpModal: false,
 
+    };
+    
     componentDidMount(){
         console.log("Home page did mount");
     }
