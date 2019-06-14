@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 // Importing Component CSS
 import './Home.css';
@@ -8,8 +9,7 @@ import Button from 'components/dumb/Button';
 
 class Home extends Component{
     state = {
-        signUpModal: false,
-
+        
     };
     
     componentDidMount(){
@@ -22,8 +22,10 @@ class Home extends Component{
                 <div className="landing-div">
                     <div className="landing-nav">
                        <div className="home-title">App Name</div>
-                       <div className="sign-up">
-                            <Button css="button transparent" text="Sign in"></Button>
+                       <div className="log-in">
+                            <Link to="/login">
+                                <Button css="button transparent" text="Log in" />
+                            </Link>
                        </div>
                     </div>
                     <div className="landing-content">
@@ -35,7 +37,9 @@ class Home extends Component{
                             This application can do this, and it can do that.  But most importantly,
                             this application is perfect for people who need this and that and this.
                         </div>
-                        <button className="sign-up-button button-green">Sign Up</button>
+                        <Link to="/signup">
+                            <button className="sign-up-button button-green">Sign Up</button>
+                        </Link>
                     </div>
 
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none">
