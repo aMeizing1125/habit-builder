@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
-// Importing components
-import ColumnButtons from '../../dumb/ColumnButtons';
-
 // Importing Component CSS
 import './Home.css';
+
+// Importing child components
+import Button from 'components/dumb/Button';
 
 class Home extends Component{
     state = {};
@@ -15,13 +15,41 @@ class Home extends Component{
 
     render(){
         return(
-            <div class="grid">
-                <div className="nav-spacer"></div>
-                <div className="left-panel">
-                    <ColumnButtons />
+            <div className="home-page">
+                <div className="landing-div">
+                    <div className="landing-nav">
+                       <div className="home-title">App Name</div>
+                       <div className="sign-up">
+                            <Button css="button transparent" text="Sign in"></Button>
+                       </div>
+                    </div>
+                    <div className="landing-content">
+                        <div className="header">
+                            Application details are here.  This is placeholder text that has been typed
+                        </div>
+                        <div className="description">
+                            This is a description about the application.
+                            This application can do this, and it can do that.  But most importantly,
+                            this application is perfect for people who need this and that and this.
+                        </div>
+                        <button className="sign-up-button button-green">Sign Up</button>
+                    </div>
+
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+                        <polygon fill="white" points="0,100 100,0 100,100"/>
+                    </svg>
+
                 </div>
-                <div className="page">
-                    <div className="content">
+
+                <div className="container">
+                    <div className="container-content">
+                        <div className="header">Title of something</div>
+                        <div className="description">
+                            This is a description about the application. This application can do this, and it can do that. But most importantly, this application is perfect for people who need this and that and this.
+                        </div>
+                        <div className="description">
+                            This is a description about the application. This application can do this, and it can do that. But most importantly, this application is perfect for people who need this and that and this.
+                        </div>
                     </div>
                 </div>
             </div>

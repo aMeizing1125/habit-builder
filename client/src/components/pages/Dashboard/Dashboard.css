@@ -1,6 +1,6 @@
 .grid{
     /* Sizing & Positioning */
-    height: auto;
+    min-height: 100%;
 
     /* Styling */
     background-color: #ececec; 

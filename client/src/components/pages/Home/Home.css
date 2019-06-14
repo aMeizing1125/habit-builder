@@ -1,49 +1,125 @@
-.grid{
-    /* Sizing & Positioning */
+.home-page{
     height: 100%;
 
-    /* Styling */
-    background-color: #f4f5f7; 
-
     /* Setup for child elements */
-    display: grid;
-    grid-template-rows: [navbar] 120px [content] auto [bottom] 80px;
-    grid-template-columns: [left] 80px [middle] auto [right] 80px;
+    font-family: 'Noto Sans JP', sans-serif;
+
 }
 
-.page{
+.landing-div{
 
     /* Sizing & Positioning */
-    grid-row-start: content;
-    grid-column-start: middle;
+    position: relative;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    flex-direction: column;
 
-    /* Setup for child elements */
+    height: auto;
+    min-height: 675px;
+
+    /* Styling */
+    color: white;
+    background-image: linear-gradient(to top, #00c6fb 0%, #005bea 100%);
+}
+
+svg {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 10vw;
+
+    /* set height to pixels if you want angle to change with screen width */
+}
+
+.landing-nav{
+    width: 100%;
+
+    height: 80px;
+    
+    display: grid;
+    grid-template-columns: [left] 200px [middle] auto [right] 200px;
+
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.landing-nav > * {
     display: flex;
     justify-content: center;
+    align-items: center;
+}
 
-    /* Testing */
+
+
+.sign-up{
+    grid-column-start: right;
+}
+
+.landing-content{
+    padding-top: 60px;
+    width: 55%;
+}
+
+.landing-content > * {
+    padding: 15px 0px;
+}
+
+.header{
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.description{
+
+    font-size: 25px;
+}
+
+.button-green{
+    width: 200px;
+    height: 60px;
+
+    color: white;
+    border-radius: 10px;
+    font-size: 25px;
+    font-weight: bold;
+
+    background-color: #61BD4F;
+    border: none;
+
+    margin-top: 20px;
+}
+
+.button-nav{
+    background-color: transparent;
+
+    color: white;
+    border: 2px solid white;
+    font-size: 25px;
+    border-radius: 10px;
+
+    width: 150px;
+    height: 45px;
+}
+
+/* --------------------- */
+/* container */
+
+.container{
+    margin-top: 40px;
+
+    display: flex;
+    justify-content: center;
+}
+
+.container-content > * {
+    margin-bottom: 30px;
+}
+
+.container-content{
     /* border: 2px solid red; */
+
+    width: 55%;
+
+    text-align: left;
 }
-
-.left-panel{
-    grid-row-start: content;
-    grid-column-start: left;
-}
-
-.content{
-    /* Sizing & Position */
-    width: 100%;
-    min-width: 200px;
-    height: 100%;
-
-    /* Styling */
-    background-color: white;
-    text-align: center;
-    border-radius: 0px 20px 20px 20px;
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-
-
-    /* Testing */
-    /* border: 2px solid blue; */
-}
-
