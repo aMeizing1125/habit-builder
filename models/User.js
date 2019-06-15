@@ -20,6 +20,12 @@ const UserSchema = new Schema({
       ref: 'Habit'
     }
   ],
+  todo: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Todo'
+    }
+  ],
   created: {
     type: Date,
     default: Date.now
