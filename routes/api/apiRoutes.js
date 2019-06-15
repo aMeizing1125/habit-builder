@@ -32,6 +32,16 @@ router
   .route("/remove/:id")
   .delete(habitController.removeHabit)
 
+// Jonathan testing----------------------------------------------------------------
 
+router.get("/testing", function(req, res){
+  res.json("Jonathan is testing api calls");
+})
+
+router
+  .route("/finduserbyquery")
+  .post(userController.findUserByQuery)
+
+// --------------------------------------------------------------------------------
 
 module.exports = router;

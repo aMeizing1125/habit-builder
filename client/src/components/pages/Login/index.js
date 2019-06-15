@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom';
 
 // Component's CSS
 import './Login.css';
 
+// Importing Utilities
+import API from 'utils/API';
+
 class Login extends Component{
     state = {
+        redirect: false,
         username: "",
         password: ""
     };
@@ -17,13 +21,51 @@ class Login extends Component{
         // Updating the input's state
         this.setState({
           [name]: value
-        },function(){
-            console.log(this.state.username);
         });
     };
+
+    handleFormSubmit = event => {
+        event.preventDefault();
+
+        API.findUser({
+            username: this.state.username
+        })
+        .then(res => {
+            // console.log(res.data)
+            if(res.data){
+                console.log("user exists")
+                this.addUser(res.data);
+            }
+            else{
+                console.log("user does not exist");
+            }
+        })
+        .catch(err => {
+            console.log(err)
+        });
+    }
+
+    addUser = user => {
+        if(user.password === this.state.password){
+            localStorage.setItem("habit-uid", user._id);
+            this.setState({
+                redirect: true
+            })
+        }
+        else{
+            console.log("Password is incorrecto! Mama Mia!")
+        }
+    }
+
+    
     
     render(){
+        if (this.state.redirect) {
+            return <Redirect push to="/dashboard" />;
+        }
+
         return(
+
             <div className="login-page">
                 <div className="login-panel">
                     <form className="login-form">
