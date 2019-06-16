@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 
 import { Redirect } from 'react-router-dom';
 
+// Importing API calls
+import API from 'utils/API';
+
 // Importing components
 import ColumnButtons from 'components/dumb/ColumnButtons';
 import Navbar from 'components/dumb/Navbar';
@@ -25,6 +28,12 @@ class Dashboard extends Component{
 
         if(uid){
             console.log("Uid: " + uid);
+            API.findUser({
+                _id: uid
+            })
+            .then(res => {
+                console.log(res.data);
+            })
         }
         else{
             console.log("User is not signed in");

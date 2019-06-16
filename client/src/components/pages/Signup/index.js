@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 // Importing component CSS
 import './Signup.css';
@@ -55,25 +55,53 @@ class Signup extends Component{
         return(
             <div className="signup-page">
                 <form className="signup-form">
-                    <div className="form-title">Sign up</div>
+                    <div className="signup-title">Sign up</div>
+                    <div className="signup-image"></div>
                     <input 
-                        className="form-input"
+                        className="signup-input"
                         type="text" 
                         value={this.state.value} 
                         onChange={this.handleInputChange} 
                         name="username"
-                        placeholder="USERNAME"
+                        placeholder="username"
+                    />
+                    <hr></hr>
+                    <input 
+                        className="signup-input"
+                        type="text" 
+                        value={this.state.value} 
+                        onChange={this.handleInputChange} 
+                        name="firstname"
+                        placeholder="first name"
                     />
                     <input 
-                        className="form-input"
+                        className="signup-input"
+                        type="text" 
+                        value={this.state.value} 
+                        onChange={this.handleInputChange} 
+                        name="lastname"
+                        placeholder="last name"
+                    />
+                    <hr></hr>
+                    <input 
+                        className="signup-input"
+                        type="text" 
+                        value={this.state.value} 
+                        onChange={this.handleInputChange} 
+                        name="email"
+                        placeholder="e-mail"
+                    />
+                    <input 
+                        className="signup-input"
                         type="text" 
                         value={this.state.value} 
                         onChange={this.handleInputChange} 
                         name="password"
-                        placeholder="PASSWORD"
+                        placeholder="password"
                     />
+                    <Link className="login-redirect" to="/login">Already have an account?</Link>
                     <button 
-                        className="form-submit"
+                        className="signup-submit"
                         onClick={this.handleFormSubmit}
                     >
                         Sign up

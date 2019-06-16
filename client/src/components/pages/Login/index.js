@@ -69,31 +69,31 @@ class Login extends Component{
             <div className="login-page">
                 <div className="login-panel">
                     <form className="login-form">
-                        <div className="login-title">Login</div>
+                        <div className="login-title">Website Name</div>
+                        <div className="login-img"></div>
                         <input 
-                            className="form-input"
+                            className="login-form-input"
                             type="text" 
                             value={this.state.value} 
                             onChange={this.handleInputChange} 
                             name="username"
-                            placeholder="USERNAME"
+                            placeholder="e-mail/username"
                         />
                         <input 
-                            className="form-input"
+                            className="login-form-input"
                             type="text" 
                             value={this.state.value} 
                             onChange={this.handleInputChange} 
                             name="password"
-                            placeholder="PASSWORD"
+                            placeholder="password"
                         />
+                        <Link className="login-redirect" to="/signup">Don't have an account?</Link>
                         <button 
-                            className="form-submit"
+                            className="login-submit"
                             onClick={this.handleFormSubmit}
                         >
                             Login
-                        </button>
-                        <Link className="form-redirect" to="/signup">Don't have an account? Sign up here!</Link>
-                        
+                        </button>                        
                     </form>
                 </div>
             </div>
