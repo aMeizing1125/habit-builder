@@ -18,11 +18,12 @@ import './Dashboard.css';
 class Dashboard extends Component{
     state = {
         redirect: false,
-        user: {}
+        username: ""
     };
 
     componentDidMount(){
-        console.log("Home page did mount");
+        console.log("Dashboard did mount");
+        console.log("page: " + this.props.match.params.page);
 
         const uid = localStorage.getItem("habit-uid");
 
@@ -33,6 +34,12 @@ class Dashboard extends Component{
             })
             .then(res => {
                 console.log(res.data);
+                this.setState({
+                    username: res.data.username
+                }, function(){
+                    console.log("User in state: ")
+                    console.log(this.state.username);
+                })
             })
         }
         else{
@@ -43,6 +50,12 @@ class Dashboard extends Component{
         }
     }
 
+    renderPage = () => {
+        if (this.props.match.params.page === "habits"){
+            return <Habit />
+        }
+    }
+
     render(){
         if (this.state.redirect) {
             return <Redirect push to="/signup" />;
@@ -50,7 +63,7 @@ class Dashboard extends Component{
 
         return(
             <div className="grid">
-                <Navbar />
+                <Navbar username={this.state.username}/>
                 <div className="nav-spacer"></div>
                 <div className="left-panel">
                     <ColumnButtons />
@@ -58,7 +71,7 @@ class Dashboard extends Component{
                 <div className="page">
                     <div className="page-title">Habits</div>
                     <div className="page-content">
-                        <Habit />
+                       {this.renderPage()}
                     </div>
                 </div>
             </div>

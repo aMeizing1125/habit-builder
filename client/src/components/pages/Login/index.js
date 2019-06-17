@@ -61,11 +61,10 @@ class Login extends Component{
     
     render(){
         if (this.state.redirect) {
-            return <Redirect push to="/dashboard" />;
+            return <Redirect push to="/dashboard/habits" />;
         }
 
         return(
-
             <div className="login-page">
                 <div className="login-panel">
                     <form className="login-form">
