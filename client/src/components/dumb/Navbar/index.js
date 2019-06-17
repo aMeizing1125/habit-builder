@@ -3,14 +3,14 @@ import React from 'react';
 // Navbar CSS
 import './Navbar.css';
 
-// Importing Components
-import Button from 'components/dumb/Button';
-
 function Navbar(props){
     return(
         <div className="navbar">
-            <div className="sign-in">
-                <Button css="button transparent" text="Sign in"></Button>
+            <div className="user">
+                <select className="user-options">
+                    <option value="" selected disabled hidden>{props.username}</option>
+                    <option>Sign Out</option>
+                </select>
             </div>
         </div>
     )
