@@ -3,7 +3,6 @@ const mongoose = require("mongoose");
 // Save a reference to the Schema constructor
 const Schema = mongoose.Schema;
 
-
 const HabitSchema = new Schema({
   _id: mongoose.Schema.Types.ObjectId,
   name: {
