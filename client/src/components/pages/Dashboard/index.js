@@ -18,7 +18,8 @@ import './Dashboard.css';
 class Dashboard extends Component{
     state = {
         redirect: false,
-        username: ""
+        username: "",
+        uid: ""
     };
 
     componentDidMount(){
@@ -35,7 +36,8 @@ class Dashboard extends Component{
             .then(res => {
                 console.log(res.data);
                 this.setState({
-                    username: res.data.username
+                    username: res.data.username,
+                    uid: res.data._id
                 }, function(){
                     console.log("User in state: ")
                     console.log(this.state.username);
@@ -52,7 +54,7 @@ class Dashboard extends Component{
 
     renderPage = () => {
         if (this.props.match.params.page === "habits"){
-            return <Habit />
+            return <Habit uid={this.state.uid}/>
         }
     }
 

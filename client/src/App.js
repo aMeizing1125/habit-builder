@@ -11,6 +11,7 @@ import Home from './components/pages/Home';
 import Dashboard from 'components/pages/Dashboard';
 import Login from './components/pages/Login';
 import Signup from './components/pages/Signup';
+import TestingPage from './components/pages/TestingPage';
 
 class App extends Component {
 
@@ -27,6 +28,7 @@ class App extends Component {
           <Route exact path="/dashboard/:page" component={Dashboard} />
           <Route exact path="/login" component={Login}></Route>
           <Route exact path="/signup" component={Signup}></Route>
+          <Route exact path="/testing" component={TestingPage}></Route>
         </div>
       </Router>
     );
