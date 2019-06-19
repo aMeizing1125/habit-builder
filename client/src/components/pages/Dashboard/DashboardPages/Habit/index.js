@@ -5,6 +5,7 @@ import habits from 'data/habits.js';
 
 // Importing Components
 import ProgressBar from 'components/dumb/ProgressBar';
+import NewHabit from 'components/pages/Dashboard/DashboardPages/NewHabit';
 
 // Importing Local CSS for Habit Page
 import './Habit.css';
@@ -12,7 +13,8 @@ import './Habit.css';
 // Habit Page
 class Habit extends Component{
     state = {
-        allHabits: []
+        allHabits: [],
+        habitModal: false
     };
 
     componentDidMount(){
@@ -23,29 +25,35 @@ class Habit extends Component{
         })
     }
 
-    // This will take in:
-    // -current day
-    // -goal day
-    // -start day
-    // 1.  It will find the amount of days from start date to goal date
-    // 2.  It will find the amount of days from today to the goal date
-    // 3.  It will create a percentage of days left to reach the goal date based on the input
+    newHabit = () => {
+        if(this.state.habitModal){
+            this.setState({
+                habitModal: false
+            })
+        }
+        else{
+            this.setState({
+                habitModal: true
+            })
+        }
+    }
 
-    percentageDaysToGoal = (habit) => {
-        console.log(habit.name);
+    // Modal to add new habit
+    displayModal = () => {
+        if(this.state.habitModal){
+            return <NewHabit />
+        }
     }
 
     render(){
+
         return(
             // Page div
             <div className="habit-page">
-                {/* 
-                Create a new div for each of the habits.  
-                This should show:
-                    -Habit name
-                    -Progress
-                    -Checkbox for checking in a habit for the day
-                */}
+                {this.displayModal()}
+                <button onClick={this.newHabit}>New Habit</button>
+
+
                 {this.state.allHabits.map(item => {
                     return(
                         <div 
@@ -54,7 +62,6 @@ class Habit extends Component{
                         >
                             <div className="habit-icon">
                                 habit name
-                                {this.percentageDaysToGoal(item)}
                             </div>
                             <div className="habit-progress">
                                 <ProgressBar progress={58}/>

@@ -19,7 +19,7 @@
     
 }
 
-.sign-in{
+.user{
     /* Positioning */
     grid-column-start: right;
 
@@ -27,4 +27,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.user-options{
+    background-color: transparent;
+    color: white;
+
+    font-size: 20px;
+    border: 0px;
+}
+
+option{
+    background-color: rgb(78, 205, 228);
+    color: white;
 }
