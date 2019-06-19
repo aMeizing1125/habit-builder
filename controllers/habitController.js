@@ -13,15 +13,19 @@ module.exports = {
     },
     findbyId: function (req, res) {
         db.Habit
-            .findbyId(req.params.id)
+            .findById(req.params.id)
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
-
     },
     createHabit: function (req, res) {
         db.Habit
             .create(req.body)
-            .then(dbModel => res.json(dbModel))
+            .then(dbHabit => {
+                return db.User.findOneAndUpdate({ _id: req.params.id }, { $push: { habit: dbHabit._id } }, { new: true })
+            })
+            .then(dbUser => {
+                res.json(dbUser);
+            })
             .catch(err => res.status(422).json(err));
     },
     updateHabit: function (req, res) {

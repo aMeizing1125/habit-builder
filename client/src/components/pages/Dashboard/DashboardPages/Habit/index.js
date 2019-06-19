@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 // Importing Data
-import habits from 'data/habits.js';
+// import habits from 'data/habits.js';
 
 // Importing Components
 import ProgressBar from 'components/dumb/ProgressBar';
@@ -18,11 +18,13 @@ class Habit extends Component{
     };
 
     componentDidMount(){
-        console.log(habits);
-        // Storing an array of habits from the database to render to the page
-        this.setState({
-            allHabits: habits
-        })
+        console.log("Habit page did mount");
+        console.log(`This user in habits page: ${this.props.uid}`);
+        this.findHabits();
+    }
+
+    findHabits = () => {
+        console.log("inside findHabits()");
     }
 
     newHabit = () => {

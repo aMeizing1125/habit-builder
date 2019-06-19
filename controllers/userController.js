@@ -15,6 +15,13 @@ module.exports = {
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
+    findUserHabits: function(req, res){
+        // Find the user from req.params.id
+        db.User
+            .findById(req.params.id)
+            .then(dbUser => res.json(dbUser))
+            .catch(err => res.status(422).json(err));
+    },
 
     // Jonathan testing----------------------------------------------------------------
 
