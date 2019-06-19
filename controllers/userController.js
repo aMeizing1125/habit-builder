@@ -19,7 +19,12 @@ module.exports = {
         // Find the user from req.params.id
         db.User
             .findById(req.params.id)
-            .then(dbUser => res.json(dbUser))
+            .then(dbUser => {
+                return db.User.find({ _id: req.params.id }, { $push: { habit: dbUser.habit } }, { new: true })
+            })
+            .then(dbUser => {
+                res.json(dbUser);
+            })
             .catch(err => res.status(422).json(err));
     },
 
