@@ -4,10 +4,12 @@ import { Redirect } from 'react-router-dom';
 
 // Import component CSS
 import './NewHabit.css';
+import API from 'utils/API';
 
 class NewHabit extends Component{
     state = {
         name: "",
+        category: "Health",
         reason: "",
         modalPage: 0,
         redirect: false
@@ -49,9 +51,25 @@ class NewHabit extends Component{
     handleSubmit = event => {
         event.preventDefault();
 
-        this.setState({
-            redirect: true
-        })
+        console.log("submit");
+
+        const uid = localStorage.getItem("habit-uid");
+
+        const newHabit = {
+            name: this.state.name,
+            category: "health",
+            frequency: "weekly",
+            goal: 30
+        }
+
+        API.addHabit(newHabit, uid)
+            .then(res => {
+                console.log(res);
+            })
+            .catch(err => {
+                console.log(err);
+            })
+
     }
 
     renderModalPage = () => {

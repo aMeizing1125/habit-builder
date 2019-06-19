@@ -14,17 +14,17 @@ router
 
 // Add Habit
 router
-  .route("/addhabit")
+  .route("/addhabit/:id")
   .post(habitController.createHabit)
 
 // Display Habits
 router
-  .route("/habits")
+  .route("/habits/:id")
   .get(habitController.findAll)
 
 // Edit habits
 router
-  .route("/habit/id:")
+  .route("/habit/:id")
   .put(habitController.updateHabit)
 
 // Delete habits
@@ -33,15 +33,13 @@ router
   .delete(habitController.removeHabit)
 
 // Jonathan testing----------------------------------------------------------------
-
-router.get("/testing", function(req, res){
-  res.json("Jonathan is testing api calls");
-})
+router
+  .route("/userhabits/:id")
+  .get(userController.findUserHabits);
 
 router
   .route("/finduserbyquery")
-  .post(userController.findUserByQuery)
-
+  .post(userController.findUserByQuery);
 // --------------------------------------------------------------------------------
 
 module.exports = router;

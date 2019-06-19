@@ -8,7 +8,13 @@ const API = {
         return axios.post("/api/newuser", user);
     },
     findUser: function(query){
-        return(axios.post("/api/findUserByQuery", query));
+        return axios.post("/api/findUserByQuery", query);
+    },
+    addHabit: function(habit, uid){
+        return axios.post("/api/addhabit/" + uid, habit);
+    },
+    findHabits: function(uid){
+        return axios.get("/api/userhabits" + uid);
     }
 }
 
