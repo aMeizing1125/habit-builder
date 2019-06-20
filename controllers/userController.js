@@ -15,15 +15,15 @@ module.exports = {
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
+    // Find all habits associated with the _id of a user
     findUserHabits: function(req, res){
-        // Find the user from req.params.id
         db.User
             .findById(req.params.id)
             .then(dbUser => {
-                return db.User.find({ _id: req.params.id }, { $push: { habit: dbUser.habit } }, { new: true })
+                return db.Habit.find( { _id: { $in: dbUser.habit }})
             })
-            .then(dbUser => {
-                res.json(dbUser);
+            .then(dbHabits => {
+                res.json(dbHabits);
             })
             .catch(err => res.status(422).json(err));
     },
