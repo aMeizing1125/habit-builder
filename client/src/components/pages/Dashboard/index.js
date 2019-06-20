@@ -23,9 +23,6 @@ class Dashboard extends Component{
     };
 
     componentDidMount(){
-        console.log("Dashboard did mount");
-        console.log("page: " + this.props.match.params.page);
-
         const uid = localStorage.getItem("habit-uid");
 
         if(uid){
@@ -34,7 +31,6 @@ class Dashboard extends Component{
                 _id: uid
             })
             .then(res => {
-                console.log(res.data);
                 this.setState({
                     username: res.data.username,
                     uid: res.data._id

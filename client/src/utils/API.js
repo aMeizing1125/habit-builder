@@ -14,7 +14,7 @@ const API = {
         return axios.post("/api/addhabit/" + uid, habit);
     },
     findHabits: function(uid){
-        return axios.get("/api/userhabits" + uid);
+        return axios.get("/api/userhabits/" + uid);
     }
 }
 
