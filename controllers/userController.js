@@ -9,6 +9,22 @@ module.exports = {
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
+    authenticate: function(req, res) {
+        User.findOne(
+            {username: req.body.username},
+            function(err, user) {
+                if (err) throw err;
+                if (user) {
+                    user.comparePassword(req.body.password, function(err, isMatch) {
+                        if (err) throw err;
+                        res.json(user);
+                    });
+                } else {
+                    res.status(404).redirect("/");
+                };
+            }
+        )
+    },
     findUser: function(req, res) {
         db.User
             .findById(req.params.id)
