@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-// Importing Data
-// import habits from 'data/habits.js';
+// Importing Utilities
+import API from 'utils/API';
 
 // Importing Components
 import ProgressBar from 'components/dumb/ProgressBar';
@@ -18,13 +18,17 @@ class Habit extends Component{
     };
 
     componentDidMount(){
-        console.log("Habit page did mount");
-        console.log(`This user in habits page: ${this.props.uid}`);
         this.findHabits();
     }
 
     findHabits = () => {
-        console.log("inside findHabits()");
+        API.findHabits("5d0a62f084fa054d84c56277")
+            .then(response => {
+                console.log(response.data);
+            })
+            .catch(err => {
+                console.log(err);
+            })
     }
 
     newHabit = () => {
