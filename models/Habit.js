@@ -28,12 +28,8 @@ const HabitSchema = new Schema({
     required: true
   },  
   created: {
-<<<<<<< HEAD
     type: String,
     required: true
-=======
-    type: String
->>>>>>> 7a63c6f777d80ded5a78bb520b0b2b123de0e8c6
   }
 });
 
