@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const TodoSchema = new Schema({
-  _id: mongoose.Schema.Types.ObjectId,
+  // _id: mongoose.Schema.Types.ObjectId,
   name: {
     type: String,
     required: true,
@@ -15,8 +15,10 @@ const TodoSchema = new Schema({
     type: Number,
   },
   created: {
-    type: Date,
-    default: Date.now
+    type: String,
+  },
+  complete: {
+    type: Boolean,
   }
 });
 

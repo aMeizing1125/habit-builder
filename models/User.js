@@ -42,14 +42,17 @@ const UserSchema = new Schema({
     }
   ],
   created: {
-    type: Date,
-    default: Date.now
+    type: String
   }
 });
 
 UserSchema.pre('save', function(next) {
   let User = this;
+<<<<<<< HEAD
 //only has the password if it is new or modified
+=======
+//only hash the password if it is new or modified
+>>>>>>> 4ad27c9d7c0ee62731acbb44f0e8d703fb46eda8
   if (!User.isModified('password')) return next();
   //generate salt (Yo mamas so fat Thanos had to snap twice)
   bcrypt.genSalt(saltRounds, function(err, salt) {
