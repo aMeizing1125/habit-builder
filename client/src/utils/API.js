@@ -1,20 +1,20 @@
 import axios from 'axios';
 
 const API = {
-    testing: function(){
-        return axios.get("/api/testing");
-    },
     addUser: function(user){
         return axios.post("/api/newuser", user);
     },
     findUser: function(query){
         return axios.post("/api/findUserByQuery", query);
     },
-    addHabit: function(habit, uid){
-        return axios.post("/api/addhabit/" + uid, habit);
+    addHabit: function(id, habit){
+        return axios.post("/api/addhabit/" + id, habit);
     },
     findHabits: function(uid){
         return axios.get("/api/userhabits/" + uid);
+    },
+    checkIn: function(id, timestamp){
+        return axios.post("/api/checkin/" + id, { timestamp });
     }
 }
 
