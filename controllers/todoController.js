@@ -6,14 +6,23 @@ module.exports = {
     findTodos: function(req, res) {
         db.User
           .findById(req.params.id)
-          .populate('Todo')
-          .then(dbModel => res.json(dbModel))
+          .then(dbUser => {
+            return db.Todo.find( { _id: { $in: dbUser.todo }})
+          })
+          .then(dbTodo => {
+            res.json(dbTodo);
+          })
           .catch(err => res.status(422).json(err));
     },
     createTodo: function(req, res) {
         db.Todo
           .create(req.body)
-          .then(dbModel => res.json(dbModel))
+          .then(dbTodo => {
+            return db.Todo.findOneAndUpdate({ _id: req.params.id }, { $push: { todo: dbTodo._id } }, { new: true })
+          })
+          .then(dbUser => {
+            res.json(dbUser);
+          })
           .catch(err => res.status(422).json(err));
     },
     updateTodo: function(req, res) {
