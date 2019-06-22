@@ -40,6 +40,10 @@ router
 router
   .route("/finduserbyquery")
   .post(userController.findUserByQuery);
+
+router
+  .route("/checkin/:id")
+  .post(habitController.checkIn);
 // --------------------------------------------------------------------------------
 
 module.exports = router;
