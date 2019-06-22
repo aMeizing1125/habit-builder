@@ -36,3 +36,14 @@
     align-items: center;
     justify-content: center;
 }
+
+.habit-checkin{
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+}
+
+.checkbox{
+    width: 25px;
+    height: 25px;
+}

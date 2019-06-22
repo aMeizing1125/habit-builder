@@ -19,18 +19,21 @@ const HabitSchema = new Schema({
     type: String,
     required: true
   },
-  progress: [
-    {
-      type: String,
-    }
-  ],
+  progress: {
+    type: Array,
+    default: []
+  },
   goal: {
     type: Number,
     required: true
-  },
+  },  
   created: {
+<<<<<<< HEAD
     type: String,
     required: true
+=======
+    type: String
+>>>>>>> 7a63c6f777d80ded5a78bb520b0b2b123de0e8c6
   }
 });
 
