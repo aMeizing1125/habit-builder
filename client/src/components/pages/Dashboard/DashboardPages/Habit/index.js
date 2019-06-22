@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 
+// Importing packages
+import moment from 'moment';
+
 // Importing Utilities
 import API from 'utils/API';
 
@@ -22,33 +25,91 @@ class Habit extends Component{
     }
 
     findHabits = () => {
-        API.findHabits("5d0a62f084fa054d84c56277")
+        const uid = localStorage.getItem("habit-uid");
+
+        API.findHabits(uid)
             .then(response => {
                 console.log(response.data);
+                this.setState({
+                    allHabits: response.data,
+                    habitModal: false
+                })
             })
             .catch(err => {
                 console.log(err);
             })
     }
 
+    renderHabit = (item) => {
+        const goalDate = moment(item.created).add(item.goal, 'days');
+        const daysCompleted = moment().diff(item.created, 'days');
+        const daysRemaining = goalDate.diff(moment(), 'days');
+        const percentage = Math.round((item.progress.length / daysCompleted) * 100);
+    
+        const progress = { goalDate: goalDate.format(), daysCompleted, daysRemaining, percentage };
+    
+        return(
+            <div 
+                className="habit"
+                key={item._id}
+            >
+                <div className="habit-icon">
+                    {item.name}
+                </div>
+                <div className="habit-progress">
+                    <ProgressBar progress={progress.percentage}/>
+                </div>
+                <div className="habit-checkin">
+                    <input 
+                        className="checkbox" 
+                        type="checkbox" 
+                        onClick={this.habitCheckIn}
+                        value={item._id}
+                    >    
+                    </input>
+                </div>
+            </div>
+        )
+    }
+
     newHabit = () => {
-        if(this.state.habitModal){
-            this.setState({
-                habitModal: false
+        this.setState({
+            habitModal: true
+        })
+    }
+
+    habitCheckIn = event => {
+        event.preventDefault();
+
+        const id = event.target.value;
+        const timestamp = moment().format();
+        
+        API.checkIn(id, timestamp)
+            .then(res => {
+                console.log(res.data)
             })
-        }
-        else{
-            this.setState({
-                habitModal: true
+            .catch(err => {
+                console.log(err)
             })
-        }
+        
+        this.findHabits();
     }
 
     // Modal to add new habit
     displayModal = () => {
         if(this.state.habitModal){
-            return <NewHabit />
+            return (
+                <NewHabit 
+                    findHabits={this.findHabits}
+                />
+            )
         }
+    }
+
+    removeModal = () => {
+        this.setState({
+            habitModal: false
+        })
     }
 
     render(){
@@ -61,23 +122,7 @@ class Habit extends Component{
 
 
                 {this.state.allHabits.map(item => {
-                    return(
-                        <div 
-                            className="habit"
-                            key={item.id}
-                        >
-                            <div className="habit-icon">
-                                habit name
-                            </div>
-                            <div className="habit-progress">
-                                <ProgressBar progress={58}/>
-                            </div>
-                            <div>
-                                Check in
-                            </div>
-                        </div>
-
-                    )
+                    return this.renderHabit(item)
                 })}
             </div>
         )

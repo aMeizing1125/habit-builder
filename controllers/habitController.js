@@ -40,5 +40,11 @@ module.exports = {
             .then(dbModel => dbModel.remove())
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
+    },
+    checkIn: function (req, res){
+        db.Habit
+            .update({ _id: req.params.id }, { $push: { progress: req.body.timestamp } })
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.status(422).json(err));
     }
 }

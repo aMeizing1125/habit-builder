@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
-import { Redirect } from 'react-router-dom';
+// Importing packages
+import moment from 'moment';
 
 // Import component CSS
 import './NewHabit.css';
@@ -11,8 +12,7 @@ class NewHabit extends Component{
         name: "",
         category: "Health",
         reason: "",
-        modalPage: 0,
-        redirect: false
+        modalPage: 0
     }
 
     componentDidMount(){
@@ -59,17 +59,17 @@ class NewHabit extends Component{
             name: this.state.name,
             category: "health",
             frequency: "weekly",
+            created: moment().format(),
             goal: 30
         }
 
-        API.addHabit(newHabit, uid)
+        API.addHabit(uid, newHabit)
             .then(res => {
-                console.log(res);
+                this.props.findHabits();
             })
             .catch(err => {
                 console.log(err);
             })
-
     }
 
     renderModalPage = () => {
@@ -83,9 +83,9 @@ class NewHabit extends Component{
                         type="text" 
                         name="name" 
                         className="habit-input" 
-                        placeholder={this.state.name ? this.state.name : "E.g. drink water"}                        onChange={this.handleInputChange}
+                        placeholder={this.state.name ? this.state.name : "E.g. drink water"}                        
+                        onChange={this.handleInputChange}
                         value={this.state.value}
-
                     />
                 </div>
             )
@@ -121,10 +121,6 @@ class NewHabit extends Component{
     }
 
     render(){
-        if (this.state.redirect) {
-            return <Redirect push to="/dashboard/habits" />;
-        }
-
         return(
             <div className="habit-modal">
                 <div className="habit-modal-content">
