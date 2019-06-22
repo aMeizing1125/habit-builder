@@ -2,10 +2,11 @@ const router = require("express").Router();
 const habitController = require("../../controllers/habitController");
 const userController = require("../../controllers/userController");
 
+
 //Check user id and password on login
 router
   .route("/user")
-  .get(userController.findUser)
+  .get(userController.authenticate)
 
 //create User
 router

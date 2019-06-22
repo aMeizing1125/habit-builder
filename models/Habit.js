@@ -21,7 +21,7 @@ const HabitSchema = new Schema({
   },
   progress: [
     {
-      type: Date,
+      type: String,
     }
   ],
   goal: {
@@ -29,8 +29,8 @@ const HabitSchema = new Schema({
     required: true
   },
   created: {
-    type: Date,
-    default: Date.now
+    type: String,
+    required: true
   }
 });
 
