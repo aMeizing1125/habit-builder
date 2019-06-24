@@ -11,6 +11,7 @@ import Navbar from 'components/dumb/Navbar';
 
 // Importing Dashboard Pages
 import Habit from 'components/pages/Dashboard/DashboardPages/Habit';
+import Todo from 'components/pages/Dashboard/DashboardPages/Todo';
 
 // Importing Component CSS
 import './Dashboard.css';
@@ -52,6 +53,9 @@ class Dashboard extends Component{
         if (this.props.match.params.page === "habits"){
             return <Habit uid={this.state.uid}/>
         }
+        if (this.props.match.params.page === "todo"){
+            return <Todo />
+        }
     }
 
     render(){
@@ -67,7 +71,7 @@ class Dashboard extends Component{
                     <ColumnButtons />
                 </div>
                 <div className="page">
-                    <div className="page-title">Habits</div>
+                    <div className="page-title">{this.props.match.params.page}</div>
                     <div className="page-content">
                        {this.renderPage()}
                     </div>
