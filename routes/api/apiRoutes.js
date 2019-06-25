@@ -7,7 +7,7 @@ const todoController = require("../../controllers/todoController");
 //Check user id and password on login
 router
   .route("/user")
-  .get(userController.authenticate)
+  .post(userController.authenticate)
 
 //create User
 router

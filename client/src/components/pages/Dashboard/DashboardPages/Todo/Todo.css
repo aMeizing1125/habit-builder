@@ -1,0 +1,117 @@
+.todo-page{
+    /* border: 2px solid blue; */
+    height: 1000px;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    flex-direction: column;
+}
+
+.new-item{
+    border: 1px solid rgb(202, 202, 202);
+
+    border-style: double;
+    width: 80%;
+    height: 80px;
+    background-color: rgb(238, 238, 238);
+
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    padding: 0px 40px;
+    box-sizing: border-box;
+
+    margin-bottom: 40px;
+
+    border-left: 8px solid rgba(47, 129, 237, 0.788);
+
+    border-radius: 5px;
+}
+
+.todo-input{
+    width: 80%;
+    height: 40px;
+    box-sizing: border-box;
+    padding: 0px 20px;
+    font-size: 20px;
+}
+
+.todo-submit{
+    height: 40px;
+    /* box-sizing: border-box; */
+    border: 0px;
+    background-color: #61BD4F;
+    color: white;
+    width: 40px;
+    font-size: 30px;
+}
+
+.todo-list{
+    border: 1px solid rgb(202, 202, 202);
+    border-left: 8px solid rgb(255, 81, 0);
+    width: 80%;
+    box-sizing: border-box;
+    
+    border-radius: 5px;
+}
+
+.list-row{
+    background-color: rgb(241, 241, 241);
+    border: .5px solid rgb(224, 224, 224);
+    display: grid;
+    grid-template-columns: 60px auto 100px;
+
+    transition: 0.1s;
+}
+
+.list-row:hover{
+    background-color: white;
+    z-index: 3;
+}
+
+.list-content{
+    display: grid;
+    grid-auto-rows: 60px;
+}
+
+.list-check{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.list-item{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding: 0px 20px;
+    font-size: 20px;
+    color: rgb(39, 39, 39);
+}
+
+.list-delete{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.delete-button{
+    height: 30px;
+    width: auto;
+    background-color: rgba(247, 247, 247, 0.281);
+    
+    color: rgb(131, 131, 131);
+    border: 1.5px solid rgb(202, 202, 202);
+    border-radius: 4px; 
+    font-size: 14px;
+}
+
+.list-row .hide{
+    visibility: hidden;
+}
+
+.list-row:hover .hide{
+    transition: 0.3s;
+    visibility: visible;
+}

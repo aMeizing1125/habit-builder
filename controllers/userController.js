@@ -10,21 +10,29 @@ module.exports = {
             .catch(err => res.status(422).json(err));
     },
     authenticate: function(req, res) {
-        User.findOne(
-            {username: req.body.username},
-            function(err, user) {
-                if (err) throw err;
-                if (user) {
-                    user.comparePassword(req.body.password, function(err, isMatch) {
-                        if (err) throw err;
-                        res.json(user);
-                    });
-                } else {
-                    res.status(404).redirect("/");
-                };
+        db.User
+        .findOne({ username: req.body.username }, function(err, user){
+            if(err) throw err;
+            if(!user){
+                res.json("user does not exist");
             }
-        )
+            else{
+                user.comparePassword(req.body.password, function(err, isMatch){
+                    if(err) {
+                        throw err
+                    }
+                    if(isMatch === true){
+                        res.json(user);
+                    }
+                    else{
+                        res.json("Invalid password")
+                    }
+                })
+            }
+        })
+        .catch(err => res.status(422).json(err));
     },
+
     findUser: function(req, res) {
         db.User
             .findById(req.params.id)

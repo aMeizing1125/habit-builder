@@ -18,10 +18,8 @@ module.exports = {
         db.Todo
           .create(req.body)
           .then(dbTodo => {
-            return db.Todo.findOneAndUpdate({ _id: req.params.id }, { $push: { todo: dbTodo._id } }, { new: true })
-          })
-          .then(dbUser => {
-            res.json(dbUser);
+            res.json(dbTodo)
+            return db.User.findOneAndUpdate({ _id: req.params.id }, { $push: { todo: dbTodo._id } }, { new: true })
           })
           .catch(err => res.status(422).json(err));
     },
