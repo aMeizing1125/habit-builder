@@ -54,7 +54,7 @@ class Dashboard extends Component{
             return <Habit uid={this.state.uid}/>
         }
         if (this.props.match.params.page === "todo"){
-            return <Todo />
+            return <Todo uid={this.state.uid}/>
         }
     }
 

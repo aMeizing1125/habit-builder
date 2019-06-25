@@ -11,7 +11,8 @@ class Login extends Component{
     state = {
         redirect: false,
         username: "",
-        password: ""
+        password: "",
+        passwordAlert: ""
     };
 
     handleInputChange = event => {
@@ -21,20 +22,23 @@ class Login extends Component{
         // Updating the input's state
         this.setState({
           [name]: value
+        }, function(){
+            console.log(this.state[name]);
         });
     };
 
     handleFormSubmit = event => {
         event.preventDefault();
 
-        API.findUser({
-            username: this.state.username
-        })
+        const credentials = {
+            username: this.state.username,
+            password: this.state.password
+        }
+
+        API.findUser(credentials)
         .then(res => {
-            // console.log(res.data)
-            if(res.data){
-                console.log("user exists")
-                this.addUser(res.data);
+            if(res){
+                this.addUser(res.data._id);
             }
             else{
                 console.log("user does not exist");
@@ -45,19 +49,12 @@ class Login extends Component{
         });
     }
 
-    addUser = user => {
-        if(user.password === this.state.password){
-            localStorage.setItem("habit-uid", user._id);
-            this.setState({
-                redirect: true
-            })
-        }
-        else{
-            console.log("Password is incorrecto! Mama Mia!")
-        }
+    addUser = uid => {
+        localStorage.setItem("habit-uid", uid);
+        this.setState({
+            redirect: true
+        })
     }
-
-    
     
     render(){
         if (this.state.redirect) {
@@ -78,9 +75,16 @@ class Login extends Component{
                             name="username"
                             placeholder="e-mail/username"
                         />
+
+                        {this.state.passwordAlert ? 
+                            <div className="password-alert">
+                                {this.state.passwordAlert}
+                            </div> 
+                        : null}
+
                         <input 
                             className="login-form-input"
-                            type="text" 
+                            type="password" 
                             value={this.state.value} 
                             onChange={this.handleInputChange} 
                             name="password"
