@@ -10,6 +10,20 @@ import './Signup.css';
 // Importing Axios calls
 import API from 'utils/API';
 
+// set up a constant regex value holding the value of a valid email
+const validEmailRegex = 
+  RegExp(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i);
+
+// a function that we'll call to change the state of the validity of the submission
+const validateForm = (errors) => {
+    let valid = true;
+    Object.values(errors).forEach(
+        // if we have an error string set valid to false
+        (val) => val.length > 0 && (valid = false)
+);
+return valid;
+}
+
 class Signup extends Component{
     state = {
         redirect: false,
@@ -17,7 +31,15 @@ class Signup extends Component{
         firstName: "",
         lastName: "",
         email: "",
-        password: ""
+        password: "",
+        // need an object to track any errors
+        errors: {
+            username: "",
+            firstName: "",
+            lastName: "",
+            email: "",
+            password: ""
+        }
     };
 
     componentDidMount(){
@@ -26,6 +48,13 @@ class Signup extends Component{
 
     handleFormSubmit = event => {
         event.preventDefault();
+
+        // calls the validate form function to ensure the form is good
+        if(validateForm(this.state.errors)) {
+            console.log("Valid Form")
+        } else {
+            console.error("Invalid Form")
+        };
 
         console.log(this.state);
 
@@ -48,14 +77,52 @@ class Signup extends Component{
     }
 
     handleInputChange = event => {
+        event.preventDefault();
         // Getting the value and name of the input which triggered the change
         const { name, value } = event.target;
+        // ref the errors added to the state
+        let errors = this.state.errors;
+        // switch statement to check that all forms are filled and valid
+        switch (name) {
+            case "username":
+                errors.username = 
+                value.length < 1
+                  ? "You must enter a username"
+                  : "";
+            break;
+            case "firstName":
+                errors.firstName = 
+                value.length < 1
+                  ? "You must enter your first name"
+                  : "";
+            break;
+            case "lastName":
+                errors.lastName = 
+                value.length < 1
+                  ? "You must enter your last name"
+                  : "";
+            break;
+            case "email":
+                errors.email = 
+                validEmailRegex.test(value)
+                ? ""
+                : "Email is not valid!";
+            break;
+            case "password":
+                errors.password =
+                value.length < 6 
+                ? "Password must be at least 6 characters"
+                : "";
+            break;
+            default:
+            break;
+        }
     
         // Updating the input's state
-        this.setState({
-          [name]: value
+        this.setState({errors, [name]: value
         },function(){
-            console.log(this.state[name]);
+            console.log(this.state[name])
+            console.log(errors);
         });
     };
 
