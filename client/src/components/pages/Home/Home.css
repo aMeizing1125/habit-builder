@@ -32,6 +32,11 @@ svg {
     /* set height to pixels if you want angle to change with screen width */
 }
 
+img{
+    width: 200px;
+    height:200px;
+}
+
 .landing-nav{
     width: 100%;
 

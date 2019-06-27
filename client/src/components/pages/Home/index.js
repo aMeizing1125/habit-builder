@@ -33,9 +33,9 @@ class Home extends Component {
                             Crushin’it lets you develop long term habits and get more done.
                         </div>
                         <div className="description">
-                             Our checking-in method enables you to focus on the process of building 
-                            habits daily instead of the results. This makes it a lasting change. Don't punish
-                            yourself for missing, reward yourself for achieving.
+                             Our check-in method enables you to focus on the process of building 
+                            habits daily to create a lasting change. Don't focus on what you are forgetting,
+                            focus on what you are acheiving.
                         </div>
                         <Link to="/signup">
                             <button className="sign-up-button button-green">Sign Up</button>
@@ -65,25 +65,27 @@ class Home extends Component {
                         How to Build Long Term Habits 
                     </h2>
                     <h4>
-                        Studies have said most people build a longer term habit in 66 days. 
+                        Studies have shown that it takes most people 66 days to form a long-term habit. 
                     </h4>
                     
                     <div className="step2-option option1 "> 
                         <h4>
-                            Process Oriented
+                            Progress Oriented
                         </h4>
                         <h6>
-                            Building long term habits means being okay with admitting you missed a day. Focus on building the process. Successful people 
+                            Building long-term habits means you can't beat yourself up over a missed a day. Focus on the progress you are making to motivate you. 
                         </h6>
                     </div>
                     
                     <div className="step2-option option2"> 
                         <img src="https://i.imgur.com/ADaGV5U.png" alt="truck with 3 stacks"/>
                         <h2>
-                            Results Oriented
+                            Goal Oriented
                         </h2>
                         <h4>
-                            If you're motivated by seeing results, we recommend you use the 3 sets of 21 days method. This way if you miss a check-in you'll have a chance to reset. This is a useful technique when utilizing habits. 
+                            If you're motivated by seeing results, we recommend you use the 21 days method. 
+                            This breaks down your progress in to 21 day cycles, preventing scattered missed days from seeming as damaging.
+                            If you miss a day, finish your current cycle and start with a clean slate. This is a useful technique to keep your focus on the positive. 
                         </h4>
                     </div>        
                </div> 
@@ -91,37 +93,47 @@ class Home extends Component {
                     <div>         
                         <img src="https://i.imgur.com/S8K9Z2u.png" alt="piggie bank"/> 
                         <h6>Money</h6> 
-                        <p>We all can improve and save more or spend less. Maybe ask yourself daily, "Did you make smart financial decisions today?"  </p>
+                        <p>We can all improve ourspending habits. Maybe ask yourself daily, "Did I make smart financial decisions today?"  </p>
                     </div>
                     <div>         
                         <img src="https://i.imgur.com/9XP3Ymb.png" alt="apple"/> 
                         <h6>Nutrition</h6> 
-                        <p>Do you want to be what you eat? We are what we eat. So let's eat some delicious goodness. Try focusing on your food as you eat it with no distractions. Spending time really tasting and appreciating a small act like eating can bring more mindfullnes to your life everywhere. </p>
+                        <p> We are what we eat, so let's make sure we are healthy. 
+                            Keep track of every day you have a healthy snack or meal to create a healthier diet.</p>
                     </div>
                     <div>         
-                        <img src="https://i.imgur.com/WSUzocz.png" alt="an atomic symbol inside of a head"/> 
+                        <img src="https://i.imgur.com/WSUzocz.png" alt="an atom symbol inside of a head"/> 
                         <h6>Skill</h6> 
-                        <p>Want to juggle, play piano, or yo-yo? There are plenty of skills out there. Useful or just fun, keeping your learning muscles active is never a bad thing. Remember the more times you drop the balls, the more likely you'll learn to juggle.</p>            
+                        <p> Have you always wanted to juggle, play piano, or yo-yo? 
+                            Useful or just for fun, keeping your learning muscles active is never a bad thing. 
+                            Remember to practice everyday and you will have that new skill in no time.</p>            
                     </div>
                     <div>         
                         <img src="https://i.imgur.com/GfaXP27.png" alt="people talking" /> 
                         <h6>Social</h6> 
-                        <p>When life is so busy, it is often hard to make time for friends and family. If we spend a little time thinking about them, often, we see them more. Have you seen been kind to someone you know today?</p>
+                        <p> Life is busy, it can often be hard to make time for friends and family. 
+                            Reach out to or meet up with a friend or family member every day to stay in touch. 
+                            Have you seen been kind to someone you know today?</p>
                     </div>
                     <div>         
                         <img src="https://i.imgur.com/OoGL2lL.png" alt="graduation cap"/> 
                         <h6>Study</h6> 
-                        <p>Studying doesn't always mean you are learning a new language. Being continuous to add more knowledge to yourself  With content everywhere, when was the last time you read a book or newspaper? </p>
+                        <p> Studying keeps your mind sharp and reinforces topics that you have been taught.
+                            It can also just be a reminder to make time to read or write.   
+                            With content everywhere, when was the last time you read a book? </p>
                     </div>
                     <div>         
                         <img src="https://i.imgur.com/crrEN9O.png" alt="bottle of water"/> 
                         <h6>Water</h6> 
-                        <p>Drink more water. This helps resolve` so many ways. Less likely to over eat, prevents kidney stones, get rid of headaches. Most people drink drinks that dehydrate them. Our bodies are up to 60% water. Are you hydrated, today? </p>
+                        <p> Drink more water. Water helps your body and mind in many ways. Did you know that your bodys response to dehydration and hunger are the same?
+                            You may need water, not food to satisfy that craving. Sugary drinks actually dehydrate you, so pure water intake is incredibly important. 
+                            Our bodies are up to 60% water. Have you hydrated, today? </p>
                     </div>
                     <div>         
                         <img src="https://i.imgur.com/zG1bIfX.png" alt="briefcase"/> 
                         <h6>Work</h6>
-                        <p>Hi ho, it is off to work we go. Everyone has to work, but what can you do that proactively makes your worklife better? Prep documents? Pack your briefcase ahead of time? Arrive early and take 10 minutes to relax before </p>
+                        <p> Hi ho, it's off to work we go. Everyone has to work, but are you working efficiently? 
+                            Build habits to leaeve on time and prepared! </p>
                     </div>
                 </div>  
 
@@ -130,7 +142,7 @@ class Home extends Component {
                         Start being your best self today! 
                     </h2>
                     <h4>
-                        Change happens by checking in daily. Let us help with that. 
+                        Change happens by checking-in daily. Let us help with that. 
                     </h4>
                     <button>
                         Sign Up  
