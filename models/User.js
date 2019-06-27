@@ -5,7 +5,7 @@ var bcrypt = require('bcrypt');
 const saltRounds = 10;
 
 
-const UserSchema = new Schema({
+let UserSchema = new Schema({
   // _id: mongoose.Schema.Types.ObjectId,
   username: {
     type: String,
@@ -47,12 +47,12 @@ const UserSchema = new Schema({
 });
 
 UserSchema.pre('save', function(next) {
-  let User = this;
+  let user = this;
 //only hash the password if it is new or modified
-  if (!User.isModified('password')) return next();
+  if (!user.isModified('password')) return next();
   //generate salt (Yo mamas so fat Thanos had to snap twice)
   bcrypt.genSalt(saltRounds, function(err, salt) {
-    if (err) return next (err);
+    if (err) return next(err);
     //hash the password using our new salt
     bcrypt.hash(User.password, salt, function(err, hash) {
       if (err) return next(err);
@@ -65,12 +65,14 @@ UserSchema.pre('save', function(next) {
 
 UserSchema.methods.comparePassword = function(candidatePassword, cb) {
   bcrypt.compare(candidatePassword, this.password, function(err, isMatch){
-    if (err) return cb(err);
+    if (err){
+      return cb(err);
+    }
     cb(null, isMatch);
   });
 };
 
- User = mongoose.model("User", UserSchema);
+User = mongoose.model("User", UserSchema);
 
 
 module.exports = User;

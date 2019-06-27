@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 
+// Importing packages
+import moment from 'moment';
+
 // Importing component CSS
 import './Signup.css';
 
@@ -11,6 +14,9 @@ class Signup extends Component{
     state = {
         redirect: false,
         username: "",
+        firstName: "",
+        lastName: "",
+        email: "",
         password: ""
     };
 
@@ -21,9 +27,15 @@ class Signup extends Component{
     handleFormSubmit = event => {
         event.preventDefault();
 
+        console.log(this.state);
+
         API.addUser({
             username: this.state.username,
-            password: this.state.password
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            email: this.state.email,
+            password: this.state.password,
+            created: moment().format()
         })
         .then(res => {
             localStorage.setItem("habit-uid", res.data._id);
@@ -71,7 +83,7 @@ class Signup extends Component{
                         type="text" 
                         value={this.state.value} 
                         onChange={this.handleInputChange} 
-                        name="firstname"
+                        name="firstName"
                         placeholder="first name"
                     />
                     <input 
@@ -79,7 +91,7 @@ class Signup extends Component{
                         type="text" 
                         value={this.state.value} 
                         onChange={this.handleInputChange} 
-                        name="lastname"
+                        name="lastName"
                         placeholder="last name"
                     />
                     <hr></hr>
@@ -93,7 +105,7 @@ class Signup extends Component{
                     />
                     <input 
                         className="signup-input"
-                        type="text" 
+                        type="password" 
                         value={this.state.value} 
                         onChange={this.handleInputChange} 
                         name="password"

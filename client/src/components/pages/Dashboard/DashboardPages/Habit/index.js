@@ -41,13 +41,21 @@ class Habit extends Component{
     }
 
     renderHabit = (item) => {
-        const goalDate = moment(item.created).add(item.goal, 'days');
+        // const goalDate = moment(item.created).add(item.goal, 'days');
         const daysCompleted = moment().diff(item.created, 'days');
-        const daysRemaining = goalDate.diff(moment(), 'days');
-        const percentage = Math.round((item.progress.length / daysCompleted) * 100);
-    
-        const progress = { goalDate: goalDate.format(), daysCompleted, daysRemaining, percentage };
-    
+        // const daysRemaining = goalDate.diff(moment(), 'days');
+        
+        const percentage = () => {
+            if(daysCompleted === 0){
+                return 100
+            }
+            else{
+                return Math.round((item.progress.length / daysCompleted) * 100);
+            }
+        }
+
+        console.log("Percentage: " + percentage());
+       
         return(
             <div 
                 className="habit"
@@ -57,7 +65,7 @@ class Habit extends Component{
                     {item.name}
                 </div>
                 <div className="habit-progress">
-                    <ProgressBar progress={progress.percentage}/>
+                    <ProgressBar progress={percentage()}/>
                 </div>
                 <div className="habit-checkin">
                     <input 

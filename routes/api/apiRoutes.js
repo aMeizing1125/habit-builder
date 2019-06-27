@@ -1,12 +1,13 @@
 const router = require("express").Router();
 const habitController = require("../../controllers/habitController");
 const userController = require("../../controllers/userController");
+const todoController = require("../../controllers/todoController");
 
 
 //Check user id and password on login
 router
   .route("/user")
-  .get(userController.authenticate)
+  .post(userController.authenticate)
 
 //create User
 router
@@ -46,5 +47,26 @@ router
   .route("/checkin/:id")
   .post(habitController.checkIn);
 // --------------------------------------------------------------------------------
+
+// Adding code for functionality of the todo controller
+// find to dos
+router
+  .route("/todo/:id")
+  .get(todoController.findTodos);
+
+// create new todo
+router
+  .route("/newtodo/:id")
+  .post(todoController.createTodo);
+
+// update a todo
+router
+  .route("/updatetodo/:id")
+  .put(todoController.updateTodo)
+
+// remove a todo
+router
+  .route("/removetodo/:id")
+  .delete(todoController.removeTodo);
 
 module.exports = router;
