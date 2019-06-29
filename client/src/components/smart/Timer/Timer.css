@@ -1,0 +1,33 @@
+.timer{
+    border: 2px solid rebeccapurple;
+
+    display: grid;
+    grid-template-rows: [title] 40px [content] auto [buttons] 60px;
+}
+
+.timer-title{
+    font-size: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.timer-display{
+    grid-row-start: content;
+}
+
+.timer-buttons{
+    grid-row-start: buttons;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.timer-button{
+    width: 30%;
+    height: 25px;
+
+    margin: 0px 10px;
+}

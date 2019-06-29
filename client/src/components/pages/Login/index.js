@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+// import { Link, Redirect } from 'react-router-dom';
+
+// Importing packages
+import moment from 'moment';
 
 // Component's CSS
 import './Login.css';
@@ -7,13 +10,38 @@ import './Login.css';
 // Importing Utilities
 import API from 'utils/API';
 
+// Importing child components
+import Logo from 'components/dumb/Logo';
+
 class Login extends Component{
     state = {
-        redirect: false,
+        page: "login",
         username: "",
         password: "",
-        passwordAlert: ""
+        firstName: "",
+        lastName: "",
+        email: "",
+        toggleLogo: true
     };
+
+    componentDidMount(){
+        setInterval(() => {
+            this.setState({ 
+                toggleLogo: !this.state.toggleLogo 
+            })
+        }, 1500);
+    }
+
+    changeLoginMethod = () => {
+        this.setState({
+            page: this.state.page === "login" ? "signup" : "login",
+            username: "",
+            password: "",
+            firstName: "",
+            lastName: "",
+            email: ""
+        })
+    }
 
     handleInputChange = event => {
         // Getting the value and name of the input which triggered the change
@@ -27,75 +55,149 @@ class Login extends Component{
         });
     };
 
-    handleFormSubmit = event => {
+    submitLogin = event => {
         event.preventDefault();
+
+        console.log("Submitting login info");
 
         const credentials = {
             username: this.state.username,
             password: this.state.password
         }
-
         API.findUser(credentials)
-        .then(res => {
-            if(res){
-                this.addUser(res.data._id);
-            }
-            else{
-                console.log("user does not exist");
-            }
+            .then(res => {
+                if(res.data.username === credentials.username){
+                    console.log("Login successful")
+                    sessionStorage.setItem("habit-uid", res.data._id);
+                    window.location.assign('/dashboard/habits');
+                }
+                else{
+                    console.log(res.data)
+                    console.log("login unsuccessful");
+                }
         })
         .catch(err => {
             console.log(err)
         });
     }
 
-    addUser = uid => {
-        localStorage.setItem("habit-uid", uid);
-        this.setState({
-            redirect: true
+    submitSignUp = event => {
+        event.preventDefault();
+
+        console.log("Submitting signup info");
+
+        API.addUser({
+            username: this.state.username,
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            email: this.state.email,
+            password: this.state.password,
+            created: moment().format()
         })
+        .then(res => {
+            localStorage.setItem("habit-uid", res.data._id);
+            // New user has been created
+            window.location.assign('/dashboard/habits');
+        })
+        .catch(err => console.log(err));
     }
     
     render(){
-        if (this.state.redirect) {
-            return <Redirect push to="/dashboard/habits" />;
-        }
-
         return(
             <div className="login-page">
                 <div className="login-panel">
                     <form className="login-form">
-                        <div className="login-title">Website Name</div>
-                        <div className="login-img"></div>
-                        <input 
-                            className="login-form-input"
-                            type="text" 
-                            value={this.state.value} 
-                            onChange={this.handleInputChange} 
-                            name="username"
-                            placeholder="e-mail/username"
-                        />
-
-                        {this.state.passwordAlert ? 
-                            <div className="password-alert">
-                                {this.state.passwordAlert}
-                            </div> 
-                        : null}
-
-                        <input 
-                            className="login-form-input"
-                            type="password" 
-                            value={this.state.value} 
-                            onChange={this.handleInputChange} 
-                            name="password"
-                            placeholder="password"
-                        />
-                        <Link className="login-redirect" to="/signup">Don't have an account?</Link>
+                        <div className="login-title">Crushin' It!</div>
+                        <div className="login-img">
+                            <Logo 
+                                pose={this.state.toggleLogo ? 'on' : 'off'}
+                                logoMain="rgb(255, 92, 80)" 
+                                logoAccent="#486791" 
+                            />
+                        </div>
+                        {/* If the user is trying to log in */}
+                        {this.state.page === "login" ? 
+                            <div className="form-state">
+                                <input 
+                                    className="login-form-input"
+                                    type="text" 
+                                    value={this.state.value} 
+                                    onChange={this.handleInputChange} 
+                                    name="username"
+                                    placeholder="e-mail/username"
+                                />
+                                <input 
+                                    className="login-form-input"
+                                    type="password" 
+                                    value={this.state.value} 
+                                    onChange={this.handleInputChange} 
+                                    name="password"
+                                    placeholder="password"
+                                />
+                            </div>
+                            :
+                            // If the user is trying to sign up
+                            <div className="form-state">
+                                <input 
+                                    className="login-form-input"
+                                    type="text" 
+                                    value={this.state.value} 
+                                    onChange={this.handleInputChange} 
+                                    name="username"
+                                    placeholder="username"
+                                />
+                                <hr></hr>
+                                <input 
+                                    className="login-form-input"
+                                    type="text" 
+                                    value={this.state.value} 
+                                    onChange={this.handleInputChange} 
+                                    name="firstName"
+                                    placeholder="first name"
+                                />
+                                <input 
+                                    className="login-form-input"
+                                    type="text" 
+                                    value={this.state.value} 
+                                    onChange={this.handleInputChange} 
+                                    name="lastName"
+                                    placeholder="last name"
+                                />
+                                <hr></hr>
+                                <input 
+                                    className="login-form-input"
+                                    type="text" 
+                                    value={this.state.value} 
+                                    onChange={this.handleInputChange} 
+                                    name="email"
+                                    placeholder="email"
+                                />
+                                <input 
+                                    className="login-form-input"
+                                    type="text" 
+                                    value={this.state.value} 
+                                    onChange={this.handleInputChange} 
+                                    name="password"
+                                    placeholder="password"
+                                />
+                            </div>
+                        }
+                        {/* Login Redirect */}
+                        <div 
+                            className="login-redirect"
+                            onClick={this.changeLoginMethod}
+                        >
+                            {this.state.page === "login" ? 
+                            "Don't have an account?" 
+                            :
+                            "Already have an account?"
+                            }
+                        </div>
                         <button 
                             className="login-submit"
-                            onClick={this.handleFormSubmit}
+                            onClick={this.state.page === "login" ? this.submitLogin : this.submitSignUp}
                         >
-                            Login
+                            {this.state.page === "login" ? "Login" : "Sign Up"}
                         </button>                        
                     </form>
                 </div>

@@ -5,7 +5,7 @@ import moment from 'moment';
 
 // Import component CSS
 import './NewHabit.css';
-import API from 'utils/API';
+// import API from 'utils/API';
 
 class NewHabit extends Component{
     state = {
@@ -34,10 +34,7 @@ class NewHabit extends Component{
 
         this.setState({
             modalPage: this.state.modalPage + 1
-        },function(){
-            console.log(this.state.name)
         })
-
     }
 
     handleBack = event => {
@@ -53,8 +50,6 @@ class NewHabit extends Component{
 
         console.log("submit");
 
-        const uid = localStorage.getItem("habit-uid");
-
         const newHabit = {
             name: this.state.name,
             category: "health",
@@ -63,13 +58,7 @@ class NewHabit extends Component{
             goal: 30
         }
 
-        API.addHabit(uid, newHabit)
-            .then(res => {
-                this.props.findHabits();
-            })
-            .catch(err => {
-                console.log(err);
-            })
+        this.props.createHabit(newHabit)
     }
 
     renderModalPage = () => {

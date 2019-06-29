@@ -1,0 +1,56 @@
+.skills-page{
+    /* border: 2px solid red; */
+
+    height: 1500px;
+}
+
+.skill-div{
+    border: 2px solid blue;
+    width: 100%;
+    height: 300px;
+
+    padding: 10px;
+    box-sizing: border-box; 
+
+    display: grid;
+    grid-template-columns: [total-time] 20% [skill] auto [timer] 20%;
+
+    margin-bottom: 40px;
+}
+
+.total-time{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    border: 2px solid salmon;
+}
+
+.total-title{
+    font-size: 22px;
+    border-bottom: 2px solid blue;
+}
+
+.time-amount{
+    font-size: 18px;
+}
+
+.skill-data{
+    display: grid;
+    grid-template-rows: [title] 40px [graph] auto;
+}
+
+.skill-title{
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 2px solid firebrick;
+}
+
+.skill-graph{
+    border: 2px solid green;
+}
+
