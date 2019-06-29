@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 
-import { Redirect } from 'react-router-dom';
-
 // Importing API calls
 import API from 'utils/API';
 
@@ -10,8 +8,9 @@ import ColumnButtons from 'components/dumb/ColumnButtons';
 import Navbar from 'components/dumb/Navbar';
 
 // Importing Dashboard Pages
-import Habit from 'components/pages/Dashboard/DashboardPages/Habit';
+import Habits from 'components/pages/Dashboard/DashboardPages/Habits';
 import Todo from 'components/pages/Dashboard/DashboardPages/Todo';
+import Skills from 'components/pages/Dashboard/DashboardPages/Skills';
 
 // Importing Component CSS
 import './Dashboard.css';
@@ -19,12 +18,15 @@ import './Dashboard.css';
 class Dashboard extends Component{
     state = {
         redirect: false,
-        username: "",
-        uid: ""
+        username: ""
     };
 
     componentDidMount(){
-        const uid = localStorage.getItem("habit-uid");
+        window.scrollTo(0, 0);
+        console.log("Request parameters:");
+        console.log(this.props.match.params);
+
+        const uid = sessionStorage.getItem("habit-uid");
 
         if(uid){
             console.log("Uid: " + uid);
@@ -43,26 +45,23 @@ class Dashboard extends Component{
         }
         else{
             console.log("User is not signed in");
-            this.setState({
-                redirect: true
-            })
+            window.location.assign('/');
         }
     }
 
     renderPage = () => {
         if (this.props.match.params.page === "habits"){
-            return <Habit uid={this.state.uid}/>
+            return <Habits uid={this.state.uid}/>
         }
         if (this.props.match.params.page === "todo"){
             return <Todo uid={this.state.uid}/>
         }
+        if (this.props.match.params.page === "skills"){
+            return <Skills uid={this.state.uid}/>
+        }
     }
 
     render(){
-        if (this.state.redirect) {
-            return <Redirect push to="/signup" />;
-        }
-
         return(
             <div className="grid">
                 <Navbar username={this.state.username}/>

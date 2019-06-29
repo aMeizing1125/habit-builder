@@ -2,6 +2,7 @@ const router = require("express").Router();
 const habitController = require("../../controllers/habitController");
 const userController = require("../../controllers/userController");
 const todoController = require("../../controllers/todoController");
+const skillController = require('../../controllers/skillController');
 
 
 //Check user id and password on login
@@ -68,5 +69,10 @@ router
 router
   .route("/removetodo/:id")
   .delete(todoController.removeTodo);
+
+// Skills routes--------------------------------
+router 
+  .route("/skills/:id")
+  .get(skillController.findSkills);
 
 module.exports = router;

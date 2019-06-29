@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link, Redirect } from 'react-router-dom';
 
 // Importing packages
 import moment from 'moment';
@@ -60,9 +59,6 @@ class Signup extends Component{
     };
 
     render(){
-        if (this.state.redirect) {
-            return <Redirect push to="/dashboard" />;
-        }
 
         return(
             <div className="signup-page">
@@ -111,7 +107,6 @@ class Signup extends Component{
                         name="password"
                         placeholder="password"
                     />
-                    <Link className="login-redirect" to="/login">Already have an account?</Link>
                     <button 
                         className="signup-submit"
                         onClick={this.handleFormSubmit}

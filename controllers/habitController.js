@@ -21,10 +21,8 @@ module.exports = {
         db.Habit
             .create(req.body)
             .then(dbHabit => {
+                res.send(dbHabit)
                 return db.User.findOneAndUpdate({ _id: req.params.id }, { $push: { habit: dbHabit._id } }, { new: true })
-            })
-            .then(dbUser => {
-                res.json(dbUser);
             })
             .catch(err => res.status(422).json(err));
     },

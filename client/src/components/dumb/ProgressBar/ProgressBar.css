@@ -3,7 +3,7 @@
 
     /* Sizing & Positioning */
     width: 80%;
-    height: 40px;
+    height: 22px;
 
     /* Styling */
     border-radius: 25px;
@@ -16,15 +16,15 @@
     height: 100%;
     /* width: 85%; */
     min-width: 40px;
+    max-width: 100%;
     
     /* Styling */
     border-radius: 25px;
-    background: rgb(255, 81, 0);  /* fallback for old browsers */
+    background: rgb(255, 92, 80);
     color: white;
 
     /* Setup for child elements */
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
