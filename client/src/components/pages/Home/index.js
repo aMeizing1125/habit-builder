@@ -42,6 +42,7 @@ class Home extends Component {
                     <div className="home-nav-left">
                         <div className="home-logo">
                         <SvgLoader path={logo}>
+                            <SvgProxy selector=".logo-top" fill="white" />
                             <SvgProxy selector=".logo-main" fill="white" />
                             <SvgProxy selector=".logo-accent" fill="#486791" />
                         </SvgLoader>
@@ -69,6 +70,7 @@ class Home extends Component {
                         <div className="landing-title-wrapper">
                             <div className="landing-logo">
                                 <SvgLoader path={logo}>
+                                    <SvgProxy selector=".logo-top" fill="rgb(255, 92, 80)" />
                                     <SvgProxy selector=".logo-main" fill="rgb(255, 92, 80)" />
                                     <SvgProxy selector=".logo-accent" fill="#486791" />
                                 </SvgLoader>

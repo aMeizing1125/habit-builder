@@ -7,7 +7,8 @@ import moment from 'moment';
 import API from 'utils/API';
 
 // Importing Components
-import Habit from 'components/dumb/Habit';
+// import Habit from 'components/dumb/Habit';
+import HabitRow from 'components/smart/HabitRow';
 import NewHabit from 'components/pages/Dashboard/DashboardPages/NewHabit';
 
 // Importing Local CSS for Habits Page
@@ -119,20 +120,20 @@ class Habits extends Component{
         return(
             <div className="habit-page">
                 {this.state.habitModal ? <NewHabit createHabit={this.createHabit} /> : null}
-                <button onClick={() => this.setState({ habitModal: true })}>New Habit</button>
 
                 <StaggerParent className="stagger-parent" pose="open">
-                    {this.state.allHabits.map(item => {
+                    {this.state.allHabits.map((item, index) => {
                         return (
-                            <Habit 
-                                key={item._id}
-                                obj={item}
-                                habitCheckIn={this.habitCheckIn}
+                            <HabitRow 
+                                key={index}
+                                obj={item} 
                                 progress={this.getProgress(item)}
                             />
                         )
                     })}
                 </StaggerParent>
+
+                <button onClick={() => this.setState({ habitModal: true })}>New Habit</button>
             </div>
         )
     }
