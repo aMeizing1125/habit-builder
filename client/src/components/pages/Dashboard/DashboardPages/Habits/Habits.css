@@ -37,12 +37,6 @@
     justify-content: center;
 }
 
-.habit-checkin{
-    display: flex;
-    align-items: center;
-    /* justify-content: center; */
-}
-
 .checkbox{
     width: 25px;
     height: 25px;
@@ -50,4 +44,9 @@
 
 .stagger-parent{
     width: 100%;
-}
+    height: 100vh;
+    padding: 20px;
+    background-color: #f3f6fa;
+
+    border-radius: 4px;
+};

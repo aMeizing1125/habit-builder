@@ -174,7 +174,7 @@ class Login extends Component{
                                 />
                                 <input 
                                     className="login-form-input"
-                                    type="text" 
+                                    type="password" 
                                     value={this.state.value} 
                                     onChange={this.handleInputChange} 
                                     name="password"

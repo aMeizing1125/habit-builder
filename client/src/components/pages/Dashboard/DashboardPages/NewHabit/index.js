@@ -7,16 +7,26 @@ import moment from 'moment';
 import './NewHabit.css';
 // import API from 'utils/API';
 
+// Importing child components
+import Logo from 'components/dumb/Logo';
+
 class NewHabit extends Component{
     state = {
         name: "",
         category: "Health",
         reason: "",
-        modalPage: 0
+        modalPage: 0,
+        toggleLogo: true
     }
 
     componentDidMount(){
         console.log("NewHabit did mount");
+
+        setInterval(() => {
+            this.setState({ 
+                toggleLogo: !this.state.toggleLogo 
+            })
+        }, 1500);
     }
 
     handleInputChange = event => {
@@ -107,6 +117,16 @@ class NewHabit extends Component{
                 </div>
             )
         }
+        if(this.state.modalPage === 3){
+            return(
+                <div className="modal-page">
+                    <div className="modal-instructions">Pick an icon</div>
+                    <div className="icon-picker">
+                        Icon Picker
+                    </div>
+                </div>
+            )
+        }
     }
 
     render(){
@@ -118,7 +138,15 @@ class NewHabit extends Component{
                             this.state.name ? this.state.name : "New Habit"
                         }</div>
                         <div className="form-body">
-                            <div className="form-image"></div>
+                            <div className="form-image-wrapper">
+                                <div className="form-image">
+                                <Logo 
+                                    pose={this.state.toggleLogo ? 'on' : 'off'}
+                                    logoMain="rgb(255, 92, 80)" 
+                                    logoAccent="#486791" 
+                                />
+                                </div>
+                            </div>
                             {this.renderModalPage()}
                         </div>
                         <div className="form-bottom">
@@ -127,10 +155,10 @@ class NewHabit extends Component{
                                 {this.state.modalPage === 0 ? null : (
                                     <button className="form-back form-button" onClick={this.handleBack}>Back</button>
                                 )}
-                                {this.state.modalPage === 2 ? null : (
+                                {this.state.modalPage === 3 ? null : (
                                     <button className="form-continue form-button" type="submit" onClick={this.handleContinue}>Continue</button>
                                 )}
-                                {this.state.modalPage === 2 ? (
+                                {this.state.modalPage === 3 ? (
                                     <button 
                                         className="form-submit form-button" 
                                         type="submit" 
