@@ -100,8 +100,7 @@ class Login extends Component{
         API.addUser(newUser)
         .then(res => {
             console.log(res.data);
-            localStorage.setItem("habit-uid", res.data._id);
-            // New user has been created
+            sessionStorage.setItem("habit-uid", res.data._id);
             window.location.assign('/dashboard/habits');
         })
         .catch(err => console.log(err));
