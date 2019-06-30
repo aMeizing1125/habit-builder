@@ -48,7 +48,7 @@ let UserSchema = new Schema({
 UserSchema.pre('save', function(next) {
   let user = this;
 //only hash the password if it is new or modified
-  if (!user.isModified('password')) return next();
+  if (!User.isModified('password')) return next();
   //generate salt (Yo mamas so fat Thanos had to snap twice)
   bcrypt.genSalt(saltRounds, function(err, salt) {
     if (err) return next(err);
@@ -56,7 +56,7 @@ UserSchema.pre('save', function(next) {
     bcrypt.hash(User.password, salt, function(err, hash) {
       if (err) return next(err);
       //override the cleartext password with the hashed one
-      User.password = hash;
+      user.password = hash;
       next();
     });
   });

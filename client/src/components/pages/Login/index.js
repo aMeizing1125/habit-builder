@@ -86,15 +86,20 @@ class Login extends Component{
 
         console.log("Submitting signup info");
 
-        API.addUser({
+        const newUser = {
             username: this.state.username,
             firstName: this.state.firstName,
             lastName: this.state.lastName,
             email: this.state.email,
             password: this.state.password,
             created: moment().format()
-        })
+        }
+
+        console.log(newUser);
+
+        API.addUser(newUser)
         .then(res => {
+            console.log(res.data);
             localStorage.setItem("habit-uid", res.data._id);
             // New user has been created
             window.location.assign('/dashboard/habits');
