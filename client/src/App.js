@@ -13,11 +13,6 @@ import Login from './components/pages/Login';
 import Signup from './components/pages/Signup';
 import TestingPage from './components/pages/TestingPage';
 
-// Mei's Heroku Deployment
-import React, { Component } from 'react';
-
-
-// end of Mei's
 
 class App extends Component {
 
@@ -46,4 +41,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default App;     
