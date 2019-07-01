@@ -2,6 +2,8 @@ import axios from 'axios';
 
 const API = {
     addUser: function(user){
+        console.log("Inside addUser()");
+        console.log(user);
         return axios.post("/api/newuser", user);
     },
     findUser: function(credentials){

@@ -23,9 +23,17 @@ const Fill = posed.div({
 })
 
 function ProgressBar(props){
+    const fillColor = { backgroundColor: props.fillColor };
+
     return(
         <div className="progress-bar">
-            <Fill initialPose="closed" pose="open" progress={props.progress} className="progress-fill">
+            <Fill 
+                className="progress-fill"
+                progress={props.progress} 
+                style={fillColor} 
+                initialPose="closed" 
+                pose="open"
+            >
                 {props.progress}%
             </Fill>
         </div>

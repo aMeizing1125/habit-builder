@@ -86,17 +86,21 @@ class Login extends Component{
 
         console.log("Submitting signup info");
 
-        API.addUser({
+        const newUser = {
             username: this.state.username,
             firstName: this.state.firstName,
             lastName: this.state.lastName,
             email: this.state.email,
             password: this.state.password,
             created: moment().format()
-        })
+        }
+
+        console.log(newUser);
+
+        API.addUser(newUser)
         .then(res => {
-            localStorage.setItem("habit-uid", res.data._id);
-            // New user has been created
+            console.log(res.data);
+            sessionStorage.setItem("habit-uid", res.data._id);
             window.location.assign('/dashboard/habits');
         })
         .catch(err => console.log(err));
@@ -174,7 +178,7 @@ class Login extends Component{
                                 />
                                 <input 
                                     className="login-form-input"
-                                    type="text" 
+                                    type="password" 
                                     value={this.state.value} 
                                     onChange={this.handleInputChange} 
                                     name="password"

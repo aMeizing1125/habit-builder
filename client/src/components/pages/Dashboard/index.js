@@ -5,7 +5,8 @@ import API from 'utils/API';
 
 // Importing components
 import ColumnButtons from 'components/dumb/ColumnButtons';
-import Navbar from 'components/dumb/Navbar';
+import Nav from 'components/dumb/Nav';
+
 
 // Importing Dashboard Pages
 import Habits from 'components/pages/Dashboard/DashboardPages/Habits';
@@ -64,7 +65,7 @@ class Dashboard extends Component{
     render(){
         return(
             <div className="grid">
-                <Navbar username={this.state.username}/>
+                <Nav />
                 <div className="nav-spacer"></div>
                 <div className="left-panel">
                     <ColumnButtons />
