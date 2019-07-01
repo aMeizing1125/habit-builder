@@ -7,11 +7,19 @@
 
     /* Subtle light red */
     /* background-color: rgb(255, 92, 80); */
-    background: linear-gradient(to right, rgb(72, 103, 145), rgb(72, 103, 145));
+    /* background: linear-gradient(to right, rgb(72, 103, 145), rgb(72, 103, 145)); */
     box-shadow: 0px 5px 7px -3px rgba(135,135,135,1);
 
     display: grid;
     grid-template-columns: [left] 30% [middle] auto [right] 30%
+}
+
+.nav-red{
+    background: linear-gradient(to right, rgb(255, 92, 80), rgb(236, 56, 56));
+}
+
+.nav-blue{
+    background: linear-gradient(to right, rgb(72, 103, 145), rgb(72, 103, 145));
 }
 
 .home-nav-left{

@@ -5,13 +5,14 @@ import './Home.css';
 
 // Importing child components
 import Login from 'components/pages/Login';
+import Nav from 'components/dumb/Nav';
 
 // SVG Manipulation Tool
 import { SvgLoader, SvgProxy } from 'react-svgmt';
 
 // Importing SVG's
 import logo from 'img/logo.svg';
-import tow from 'img/tow.svg';
+// import tow from 'img/tow.svg';
 import calendar from 'img/calendar.svg';
 import handWrench from 'img/hand-wrench.svg';
 import tool from 'img/tool.svg';
@@ -37,33 +38,7 @@ class Home extends Component {
                 {/* Login */}
                 {this.state.loginVisible && ( <Login /> )}
 
-                {/* Navbar */}
-                <div className="home-nav">
-                    <div className="home-nav-left">
-                        <div className="home-logo">
-                        <SvgLoader path={logo}>
-                            <SvgProxy selector=".logo-top" fill="white" />
-                            <SvgProxy selector=".logo-main" fill="white" />
-                            <SvgProxy selector=".logo-accent" fill="#486791" />
-                        </SvgLoader>
-                        </div>
-                        <div className="home-name">Crushin' It!</div>
-                    </div>
-                    <div className="home-nav-right">
-                        <div className="nav-home nav-item">Home</div>
-                        <div className="nav-blog nav-item">Blog</div>
-                        <div className="nav-faq nav-item">FAQ</div>
-                        <div 
-                            className="nav-signin nav-item"
-                            onClick={this.handleLogin}
-                        >Sign In</div>
-                    </div>
-                    
-                    {/* Tow Svg */}
-                    <SvgLoader class="tow" path={tow}>
-                        <SvgProxy selector=".tow-main" fill="rgb(255, 92, 80)" ></SvgProxy>
-                    </SvgLoader>
-                </div>
+                <Nav color="nav-red" page="home" signIn={this.handleLogin} />
 
                 <div className="landing-div">
                     <div className="landing-left">
