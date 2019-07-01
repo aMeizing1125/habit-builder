@@ -9,6 +9,7 @@ import './NewHabit.css';
 
 // Importing child components
 import Logo from 'components/dumb/Logo';
+import ExitButton from 'components/dumb/ExitButton';
 
 class NewHabit extends Component{
     state = {
@@ -117,16 +118,6 @@ class NewHabit extends Component{
                 </div>
             )
         }
-        if(this.state.modalPage === 3){
-            return(
-                <div className="modal-page">
-                    <div className="modal-instructions">Pick an icon</div>
-                    <div className="icon-picker">
-                        Icon Picker
-                    </div>
-                </div>
-            )
-        }
     }
 
     render(){
@@ -134,9 +125,13 @@ class NewHabit extends Component{
             <div className="habit-modal">
                 <div className="habit-modal-content">
                     <form className="habit-form">
-                        <div className="new-habit-title">{
-                            this.state.name ? this.state.name : "New Habit"
-                        }</div>
+                        <div className="new-habit-header">
+                            <div className="new-habit-title">
+                                {this.state.name ? this.state.name : "New Habit"}
+                            </div>
+                            {/* Close button */}
+                            <ExitButton click={this.props.closeModal}/>
+                        </div>
                         <div className="form-body">
                             <div className="form-image-wrapper">
                                 <div className="form-image">
@@ -155,10 +150,10 @@ class NewHabit extends Component{
                                 {this.state.modalPage === 0 ? null : (
                                     <button className="form-back form-button" onClick={this.handleBack}>Back</button>
                                 )}
-                                {this.state.modalPage === 3 ? null : (
+                                {this.state.modalPage === 2 ? null : (
                                     <button className="form-continue form-button" type="submit" onClick={this.handleContinue}>Continue</button>
                                 )}
-                                {this.state.modalPage === 3 ? (
+                                {this.state.modalPage === 2 ? (
                                     <button 
                                         className="form-submit form-button" 
                                         type="submit" 

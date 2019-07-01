@@ -28,6 +28,8 @@
     align-items: center;
     /* text-align: left; */
     font-size: 12px;
+
+    cursor: pointer;
 }
 
 .tab-title{
@@ -43,9 +45,7 @@
     padding: 5px;
     box-sizing: border-box;
 
-    border-radius: 4px;
-
-    cursor: pointer;
+    border-radius: 6px;
 }
 
 .tab-habit{
