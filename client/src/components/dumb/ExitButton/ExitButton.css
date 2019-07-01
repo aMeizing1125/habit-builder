@@ -1,0 +1,12 @@
+.exit-button{
+    border: 3px solid white;
+    border-radius: 6px;
+    width: 35px;
+    height: 35px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+}

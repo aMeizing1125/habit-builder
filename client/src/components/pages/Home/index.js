@@ -5,16 +5,24 @@ import './Home.css';
 
 // Importing child components
 import Login from 'components/pages/Login';
+import Nav from 'components/dumb/Nav';
 
 // SVG Manipulation Tool
 import { SvgLoader, SvgProxy } from 'react-svgmt';
 
 // Importing SVG's
 import logo from 'img/logo.svg';
-import tow from 'img/tow.svg';
 import calendar from 'img/calendar.svg';
 import handWrench from 'img/hand-wrench.svg';
 import tool from 'img/tool.svg';
+
+// Importing animations
+import charPoses from 'animations/charPoses';
+
+// Importing SplitText
+// import posed from 'react-pose';
+import SplitText from 'react-pose-text';;
+
 
 class Home extends Component {
     state = {
@@ -31,39 +39,19 @@ class Home extends Component {
         })
     }
 
+    closeLogin = () => {
+        this.setState({
+            loginVisible: false
+        })
+    }
+
     render() {
         return (
             <div className="home-page">
                 {/* Login */}
-                {this.state.loginVisible && ( <Login /> )}
+                {this.state.loginVisible && ( <Login closeLogin={this.closeLogin}/> )}
 
-                {/* Navbar */}
-                <div className="home-nav">
-                    <div className="home-nav-left">
-                        <div className="home-logo">
-                        <SvgLoader path={logo}>
-                            <SvgProxy selector=".logo-top" fill="white" />
-                            <SvgProxy selector=".logo-main" fill="white" />
-                            <SvgProxy selector=".logo-accent" fill="#486791" />
-                        </SvgLoader>
-                        </div>
-                        <div className="home-name">Crushin' It!</div>
-                    </div>
-                    <div className="home-nav-right">
-                        <div className="nav-home nav-item">Home</div>
-                        <div className="nav-blog nav-item">Blog</div>
-                        <div className="nav-faq nav-item">FAQ</div>
-                        <div 
-                            className="nav-signin nav-item"
-                            onClick={this.handleLogin}
-                        >Sign In</div>
-                    </div>
-                    
-                    {/* Tow Svg */}
-                    <SvgLoader class="tow" path={tow}>
-                        <SvgProxy selector=".tow-main" fill="rgb(255, 92, 80)" ></SvgProxy>
-                    </SvgLoader>
-                </div>
+                <Nav color="nav-red" page="home" signIn={this.handleLogin} />
 
                 <div className="landing-div">
                     <div className="landing-left">
@@ -75,7 +63,9 @@ class Home extends Component {
                                     <SvgProxy selector=".logo-accent" fill="#486791" />
                                 </SvgLoader>
                             </div>
-                            <div className="landing-title">Crushin' It!</div>
+                            <div className="landing-title">
+                                <SplitText initialPose="exit" pose="enter" charPoses={charPoses}>Crushin' It!</SplitText>   
+                            </div>
                         </div>
                         <div className="landing-description">
                             <strong>Building strong habits</strong> one day at a time
@@ -84,7 +74,7 @@ class Home extends Component {
                     <div className="landing-right"></div>
                 </div>
                 <div className="home-divider">
-                    divider
+                    "Divider"
                 </div>
                 <div className="app-description-wrapper">
                     <div className="app-description">
@@ -123,7 +113,6 @@ class Home extends Component {
                     </div>
                 </div>
                 <div className="home-divider">
-                    divider
                 </div>
             </div>
         )

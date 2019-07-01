@@ -12,7 +12,7 @@ import tow from 'img/tow.svg';
 
 function Nav(props){
     return(
-        <div className="nav">
+        <div className={'nav ' + props.color}>
             <div className="home-nav-left">
                 <div className="home-logo">
                 <SvgLoader path={logo}>
@@ -24,13 +24,34 @@ function Nav(props){
                 <div className="home-name">Crushin' It!</div>
             </div>
             <div className="home-nav-right">
-                <div className="nav-home nav-item">Home</div>
+                <div className="nav-home nav-item" onClick={() => window.location.assign('/')}>Home</div>
                 <div className="nav-blog nav-item">Blog</div>
                 <div className="nav-faq nav-item">FAQ</div>
-                <div 
-                    className="nav-signin nav-item"
-                    // onClick={this.handleLogin}
-                >Sign In</div>
+    
+                {/* If user is on home page and not logged in*/}
+                {props.page === "home" && !sessionStorage.getItem("loggedIn") && 
+                    <div className="sign-in nav-item" onClick={props.signIn}>
+                        Sign in
+                    </div>
+                }
+                    
+                {/* If user is on home page and logged in */}
+                {props.page === "home" && sessionStorage.getItem("loggedIn") === "true" &&
+                    <div className="dashboard-button nav-item" onClick={() => window.location.assign('/dashboard/habits')}>
+                        Dashboard
+                    </div>
+                }
+
+                {/* If user is on dashboard page */}
+                {props.page === "dashboard" && 
+                    <div className="nav-item sign-out" onClick={() => {
+                            sessionStorage.clear()
+                            window.location.assign("/")
+                        }}>
+                        Sign Out
+                    </div>
+                }
+
             </div>
             
             {/* Tow Svg */}

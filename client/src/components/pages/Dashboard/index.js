@@ -69,7 +69,7 @@ class Dashboard extends Component{
     render(){
         return(
             <div className="grid">
-                <Nav />
+                <Nav page="dashboard" color="nav-blue"/>
                 <div className="nav-spacer"></div>
                 <div className="left-panel">
                     <ColumnButtons 

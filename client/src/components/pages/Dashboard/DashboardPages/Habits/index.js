@@ -7,12 +7,18 @@ import moment from 'moment';
 import API from 'utils/API';
 
 // Importing Components
-// import Habit from 'components/dumb/Habit';
 import HabitRow from 'components/smart/HabitRow';
 import NewHabit from 'components/pages/Dashboard/DashboardPages/NewHabit';
+import AddGear from 'components/dumb/AddGear';
 
 // Importing Local CSS for Habits Page
 import './Habits.css';
+
+// SVG Manipulation Tool
+// import { SvgLoader, SvgProxy } from 'react-svgmt';
+
+// Importing SVGs
+// import addGear from 'img/addGear.svg';
 
 // Importing posed animation library
 import posed from 'react-pose'
@@ -78,14 +84,15 @@ class Habits extends Component{
 
     // Takes in a habit object, returns object with progress data
     getProgress = (obj) => {
-        // console.log(obj);
-
         return {
             goalDate: moment(obj.created).add(obj.goal, 'days').format(),
             daysComplete: moment().diff(obj.created, 'days'),
             daysRemaining: moment(obj.created).add(obj.goal, 'days').diff(moment(), 'days'),
             accuracy: Math.round((obj.progress.length / moment().diff(obj.created, 'days')) * 100),
-            checkedInToday: obj.progress.length === 0 ? false : this.isThisToday(obj.progress.slice(-1)[0])
+            percentageToGoal: Math.round(((moment().diff(obj.created, 'days') + 1) / obj.goal) * 100),
+            checkedInToday: obj.progress.length === 0 ? false : this.isThisToday(obj.progress.slice(-1)[0]),
+            lastCheckIn: obj.progress.length > 0 ? moment(obj.progress.slice(-1)[0]).format("MM/DD/YYYY") : "no check-ins",
+            created: moment(obj.created).format("MM/DD/YYYY")
         }
     }
 
@@ -94,8 +101,6 @@ class Habits extends Component{
 
         // Target habit object:
         const targetObj = this.findHabitInState(event.target.value);
-
-        console.log(`Last check in: ${targetObj.progress.slice(-1)[0]}`);
 
         // If the user has already checked in this habit today
         if(targetObj.progress.length > 0 && this.isThisToday(targetObj.progress.slice(-1)[0])){
@@ -116,24 +121,43 @@ class Habits extends Component{
         }
     }
 
+    displayModal = () => {
+        this.setState({
+            habitModal: true
+        })
+    }
+
+    closeModal = () => {
+        this.setState({
+            habitModal: false
+        })
+    }
+
     render(){
         return(
             <div className="habit-page">
-                {this.state.habitModal ? <NewHabit createHabit={this.createHabit} /> : null}
+                {this.state.habitModal && <NewHabit createHabit={this.createHabit} closeModal={this.closeModal}/>}
 
-                <StaggerParent className="stagger-parent" pose="open">
-                    {this.state.allHabits.map((item, index) => {
-                        return (
-                            <HabitRow 
-                                key={index}
-                                obj={item} 
-                                progress={this.getProgress(item)}
-                            />
-                        )
-                    })}
-                </StaggerParent>
+                <AddGear click={this.displayModal} />
 
-                <button onClick={() => this.setState({ habitModal: true })}>New Habit</button>
+                {/* Does the user have any habits? */}
+                {this.state.allHabits.length === 0 ? 
+                    
+                    <div className="no-habits">This user has no habits</div>
+                    :
+                    <StaggerParent className="stagger-parent" pose="open">
+                        {this.state.allHabits.map((item, index) => {
+                            return (
+                                <HabitRow 
+                                    key={index}
+                                    obj={item} 
+                                    progress={this.getProgress(item)}
+                                    habitCheckIn={this.habitCheckIn}
+                                />
+                            )
+                        })}
+                    </StaggerParent>
+                }
             </div>
         )
     }

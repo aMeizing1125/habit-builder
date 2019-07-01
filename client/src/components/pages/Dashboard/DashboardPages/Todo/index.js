@@ -24,9 +24,7 @@ class Todo extends Component {
     findAllTasks = () => {
         console.log("Inside findAllTasks");
 
-        const uid = localStorage.getItem("habit-uid");
-
-        API.allTasks(uid)
+        API.allTasks(sessionStorage.getItem("habit-uid"))
             .then(res => {
                 console.log(res.data);
                 this.setState({
@@ -59,7 +57,7 @@ class Todo extends Component {
             complete: false,
         }
 
-        API.newTask(this.props.uid, task)
+        API.newTask(sessionStorage.getItem("habit-uid"), task)
             .then(res => {
                 console.log(res.data)
                 const joined = this.state.allTasks.concat(res.data);
