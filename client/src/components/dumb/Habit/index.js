@@ -26,7 +26,7 @@ function Habit(props){
                 {props.progress.daysComplete > 0 ? 
                     <ProgressBar progress={props.progress.accuracy} />
                     :
-                    // Habit was created today, and the user has not checked in 
+                    // Habit was created today, and the user has checked in 
                     props.obj.progress.length === 0 ?
                         "Habit created today, not checked in"
                         :

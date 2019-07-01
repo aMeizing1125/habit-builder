@@ -1,0 +1,29 @@
+
+/* ------------------------------------- */
+.add-gear-wrapper{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    /* background-color: rgba(148, 148, 148, 0.719); */
+
+    z-index: 50;
+
+    display: flex;
+}
+
+
+.add-gear{
+    /* border: 2px solid blue; */
+
+    position: fixed;
+
+    width: 90px;
+    height: 90px;
+
+    bottom: 40px;
+    right: 70px;
+
+    cursor: pointer;
+}

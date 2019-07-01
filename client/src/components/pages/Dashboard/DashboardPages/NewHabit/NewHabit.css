@@ -36,7 +36,7 @@
     grid-template-rows: [title] 80px [body] auto [bottom] 80px;
 }
 
-.new-habit-title{
+.new-habit-header{
     background-color: rgb(255, 92, 80);
 
     color: white;
@@ -44,8 +44,12 @@
     padding: 0px 40px;
 
     display: flex;
-    justify-content: left;
+    justify-content: space-between;
     align-items: center;
+}
+
+.new-habit-title{
+    margin-right: 35px;
 }
 
 .form-body{
