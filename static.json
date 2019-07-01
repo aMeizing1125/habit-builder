@@ -1,0 +1,10 @@
+
+// Mei's Heroku deployment testing
+{
+  "root": "build/",
+  "clean_urls": false,
+  "routes": {
+    "/**": "index.html"
+  }
+}
+// end of Mei's

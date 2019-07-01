@@ -13,7 +13,14 @@ import Login from './components/pages/Login';
 import Signup from './components/pages/Signup';
 import TestingPage from './components/pages/TestingPage';
 
+
 class App extends Component {
+
+  // Mei's Heroku Deployment testing
+  // static propTypes = {
+  //   children: PropTypes.node
+  // }
+  
 
   componentDidMount(){
     console.log("App.js is now stateful");
@@ -26,13 +33,13 @@ class App extends Component {
           <Route exact path="/" component={Home} />
           <Route exact path="/dashboard" component={Dashboard} />
           <Route exact path="/dashboard/:page" component={Dashboard} />
-          <Route exact path="/login" component={Login}></Route>
-          <Route exact path="/signup" component={Signup}></Route>
-          <Route exact path="/testing" component={TestingPage}></Route>
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/signup" component={Signup} />
+          <Route exact path="/testing" component={TestingPage} />
         </div>
       </Router>
     );
   }
 }
 
-export default App;
+export default App;     
