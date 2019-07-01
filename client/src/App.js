@@ -16,9 +16,10 @@ import TestingPage from './components/pages/TestingPage';
 
 class App extends Component {
 
-  static propTypes = {
-    children: PropTypes.node
-  }
+  // Mei's Heroku Deployment testing
+  // static propTypes = {
+  //   children: PropTypes.node
+  // }
   
 
   componentDidMount(){

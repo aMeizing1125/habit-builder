@@ -2,6 +2,13 @@ const path = require("path");
 const router = require("express").Router();
 const apiRoutes = require("../routes/api/apiRoutes.js");
 
+// Pages
+import Home from './components/pages/Home';
+// import Dashboard from 'components/pages/Dashboard';
+// import Login from './components/pages/Login';
+// import Signup from './components/pages/Signup';
+// import TestingPage from './components/pages/TestingPage';
+
 
 //React Route
 router.use("/reactroute", function(req, res) {
@@ -24,9 +31,10 @@ router.use(function(req, res) {
 module.exports = router;
 
 // Mei's Heroku Deployment
+// Change AppSplash & AppDemo - Home
 export default <Router history={hashHistory}>
-  <Route path="/" component={App}>
-    <IndexRoute component={AppSplash}/>
+  <Route path="/" component={Home}>
+    <IndexRoute component={Home}/>
     <Route path="demo" component={AppDemo}/>
   </Route>
 </Router>

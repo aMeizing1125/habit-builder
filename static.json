@@ -1,5 +1,5 @@
 
-// Mei's Heroku deployment
+// Mei's Heroku deployment testing
 {
   "root": "build/",
   "clean_urls": false,
