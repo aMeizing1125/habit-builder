@@ -1,3 +1,5 @@
+
+// Mei's Heroku deployment
 {
   "root": "build/",
   "clean_urls": false,
@@ -5,3 +7,4 @@
     "/**": "index.html"
   }
 }
+// end of Mei's
