@@ -62,13 +62,20 @@ class Dashboard extends Component{
         }
     }
 
+    selectPage = (page) => {
+        window.location.assign('/dashboard/' + page);
+    }
+
     render(){
         return(
             <div className="grid">
                 <Nav />
                 <div className="nav-spacer"></div>
                 <div className="left-panel">
-                    <ColumnButtons />
+                    <ColumnButtons 
+                        currentPage={this.props.match.params.page} 
+                        selectPage={this.selectPage} 
+                    />
                 </div>
                 <div className="page">
                     <div className="page-title">{this.props.match.params.page}</div>
