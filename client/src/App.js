@@ -33,9 +33,9 @@ class App extends Component {
           <Route exact path="/" component={Home} />
           <Route exact path="/dashboard" component={Dashboard} />
           <Route exact path="/dashboard/:page" component={Dashboard} />
-          <Route exact path="/login" component={Login}></Route>
-          <Route exact path="/signup" component={Signup}></Route>
-          <Route exact path="/testing" component={TestingPage}></Route>
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/signup" component={Signup} />
+          <Route exact path="/testing" component={TestingPage} />
         </div>
       </Router>
     );
