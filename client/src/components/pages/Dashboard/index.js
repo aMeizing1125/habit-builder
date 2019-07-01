@@ -63,7 +63,7 @@ class Dashboard extends Component{
     }
 
     selectPage = (page) => {
-        window.location.assign('/dashboard/' + page);
+        // window.location.assign('/dashboard/' + page);
     }
 
     render(){
