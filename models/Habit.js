@@ -7,7 +7,7 @@ const HabitSchema = new Schema({
   // _id: mongoose.Schema.Types.ObjectId,
   name: {
     type: String,
-    required: true
+    required: [true, 'Please name your habit']
   },
   category: {
     type: String,
@@ -25,7 +25,7 @@ const HabitSchema = new Schema({
   },
   goal: {
     type: Number,
-    required: true
+    required: [true, 'You forgot to choose a goal!']
   },  
   created: {
     type: String,
