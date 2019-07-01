@@ -61,6 +61,12 @@
 
     box-shadow: inset 0px 0px 13px 0px rgba(0,0,0,0.83);
     background: linear-gradient(to right, #3A4458, rgb(87, 98, 122));
+
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
 }
 
 .app-description-wrapper{

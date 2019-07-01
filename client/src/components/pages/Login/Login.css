@@ -25,18 +25,26 @@
     box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
 }   
 
-.login-title{
+.login-header{
     /* border: 1px solid rgb(255, 60, 0); */
     width: 100%;
-
+    box-sizing: border-box;
     display: flex;
     justify-content: center;
+
     padding: 15px 0px;
 
     background-color: rgb(255, 92, 80); 
     color: white;
     font-size: 28px;
     font-weight: bold;   
+}
+
+.login-header-wrapper{
+    width: 80%;
+
+    display: flex;
+    justify-content: space-between;
 }
 
 .login-form{

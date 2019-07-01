@@ -17,9 +17,9 @@ class HabitRow extends Component{
         console.log(this.props.progress);
     }
 
-    showDetails = () => {
+    toggleDetails = () => {
         this.setState({
-            showDetails: true
+            showDetails: !this.state.showDetails
         })
     }
 
@@ -31,7 +31,7 @@ class HabitRow extends Component{
                     <div className="habit-title">
                         {this.props.obj.name}
                     </div>
-                    <div className="more-details" onClick={this.showDetails}>Details</div>
+                    <div className="more-details" onClick={this.toggleDetails}>Details</div>
                 </div>
                 {/* {this.state.showDetails && <HabitDetails />} */}
                 <div className="habit-grid">
@@ -75,8 +75,8 @@ class HabitRow extends Component{
                             } 
                     </div>
                     <div className="habit-right">
-                        <div className="habit-check-in">
-                            Check in
+                        <div className={'habit-check-in ' + (this.props.progress.checkedInToday && "complete")}>
+                            {this.props.progress.checkedInToday ? "Checked in" : "Check in"}
                             <input 
                                 type="checkbox" 
                                 className="crushit"
@@ -88,7 +88,7 @@ class HabitRow extends Component{
                     </div>
                 </div>
                 {/* End of Habit grid */}
-                {this.state.showDetails && <HabitDetails />}
+                {this.state.showDetails && <HabitDetails progress={this.props.progress} obj={this.props.obj}/>}
             </div>
         )
     }
