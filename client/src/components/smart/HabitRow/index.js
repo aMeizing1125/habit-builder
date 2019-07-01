@@ -9,6 +9,11 @@ import ProgressBar from 'components/dumb/ProgressBar';
 class HabitRow extends Component{
     state = {};
 
+    componentDidMount(){
+        console.log("This habit's progress: ");
+        console.log(this.props.progress);
+    }
+
     render(){
         return(
             <div className="habit-row">
@@ -21,13 +26,20 @@ class HabitRow extends Component{
                 </div>
                 <div className="habit-grid">
                     <div className="habit-left">
-                        <div className="habit-icon">
-                            Icon
+                        <div className="days-left-title">
+                            Days until goal:
+                        </div>
+                        <div className="habit-days">
+                            {this.props.progress.daysRemaining}
                         </div>
                     </div>
                     {/* Habit visualization */}
                     <div className="habit-visualization">
-                        <div className="visualization-content flex space-between">
+                        {/* If the habit was created today, and the user has not checked in */}
+                        {this.props.progress.daysComplete > 0 ? 
+                            <div className="first-day">This habit was created today</div>
+                            :
+                            <div className="visualization-content flex space-between">
                             <div className="visualization-row">
                                 <div className="visualization-title">Accuracy:</div>
                                 <ProgressBar 
@@ -40,6 +52,7 @@ class HabitRow extends Component{
                                 <ProgressBar progress={43} fillColor="rgb(0, 124, 162)" />
                             </div>
                         </div>
+                        }
                     </div>
                     <div className="habit-right">
                         <div className="habit-check-in">
