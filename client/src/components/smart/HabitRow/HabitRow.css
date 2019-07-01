@@ -75,6 +75,16 @@
     background-color: white;
 
     padding: 14px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.habit-days{
+    color: rgb(255, 92, 80);
+    font-size: 35px;
 }
 
 .habit-icon{

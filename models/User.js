@@ -8,25 +8,26 @@ let UserSchema = new Schema({
   // _id: mongoose.Schema.Types.ObjectId,
   username: {
     type: String,
-    required: true,
-    unique: true
+    required: [true, 'Please enter your username'],
+    unique: [true, 'That username is already in use'],
   },
   firstName: {
     type: String,
-    required: true
+    required: [true, 'Please enter your first name'],
   },
   lastName: {
     type: String,
-    required: true
+    required: [true, 'Please enter your last name'],
   },
   email: {
     type: String,
-    required: true,
+    required: [true, 'Please enter your email address'],
     unique: true
   },
   password: {
     type: String,
-    required: true
+    min: [6, 'Your password must be at least 6 characters'],
+    required: [true, "You need a password"]
   },
   habit: [
     {
