@@ -12,6 +12,7 @@ import API from 'utils/API';
 
 // Importing child components
 import Logo from 'components/dumb/Logo';
+import ExitButton from 'components/dumb/ExitButton';
 
 class Login extends Component{
     state = {
@@ -113,7 +114,13 @@ class Login extends Component{
             <div className="login-page">
                 <div className="login-panel">
                     <form className="login-form">
-                        <div className="login-title">Crushin' It!</div>
+                        <div className="login-header">
+                            <div className="login-header-wrapper">
+                                <div className="login-title">Crushin' It!</div>
+                                <ExitButton click={this.props.closeLogin}/>
+                            </div>
+                        </div>
+                       
                         <div className="login-img">
                             <Logo 
                                 pose={this.state.toggleLogo ? 'on' : 'off'}

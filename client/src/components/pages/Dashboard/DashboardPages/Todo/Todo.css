@@ -5,6 +5,10 @@
     /* justify-content: center; */
     align-items: center;
     flex-direction: column;
+
+    background-color: #d9dbdf;
+    border-radius: 4px;
+    padding: 20px;
 }
 
 .new-item{
@@ -13,7 +17,7 @@
     border-style: double;
     width: 80%;
     height: 80px;
-    background-color: rgb(238, 238, 238);
+    background-color: white;
 
     display: flex;
     /* justify-content: center; */
@@ -56,7 +60,7 @@
 }
 
 .list-row{
-    background-color: rgb(241, 241, 241);
+    background-color: rgb(255, 255, 255);
     border: .5px solid rgb(224, 224, 224);
     display: grid;
     grid-template-columns: 60px auto 100px;
@@ -65,7 +69,7 @@
 }
 
 .list-row:hover{
-    background-color: white;
+    background-color: rgb(224, 231, 235);
     z-index: 3;
 }
 
@@ -105,6 +109,8 @@
     border: 1.5px solid rgb(202, 202, 202);
     border-radius: 4px; 
     font-size: 14px;
+
+    cursor: pointer;
 }
 
 .list-row .hide{

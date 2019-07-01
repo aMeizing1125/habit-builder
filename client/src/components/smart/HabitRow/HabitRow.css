@@ -117,6 +117,10 @@
     align-items: center;
 }
 
+.complete{
+    color: rgb(16, 92, 39);
+}
+
 .habit-visualization{
     /* border: 1px solid rgb(207, 207, 207); */
     background-color: white;
@@ -147,10 +151,9 @@
 .crushit{
     margin: 5px 0px;
 
-    /* background-color: rgb(245, 245, 245); */
-    border: 2px solid rgb(153, 153, 153);
-    height: 25px;
+    height: 40px;
     width: 25px;
 
     border-radius: 4px;
 }
+

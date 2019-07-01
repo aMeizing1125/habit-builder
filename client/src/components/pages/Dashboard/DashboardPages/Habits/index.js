@@ -84,15 +84,15 @@ class Habits extends Component{
 
     // Takes in a habit object, returns object with progress data
     getProgress = (obj) => {
-        // console.log(obj);
-
         return {
             goalDate: moment(obj.created).add(obj.goal, 'days').format(),
             daysComplete: moment().diff(obj.created, 'days'),
             daysRemaining: moment(obj.created).add(obj.goal, 'days').diff(moment(), 'days'),
             accuracy: Math.round((obj.progress.length / moment().diff(obj.created, 'days')) * 100),
             percentageToGoal: Math.round(((moment().diff(obj.created, 'days') + 1) / obj.goal) * 100),
-            checkedInToday: obj.progress.length === 0 ? false : this.isThisToday(obj.progress.slice(-1)[0])
+            checkedInToday: obj.progress.length === 0 ? false : this.isThisToday(obj.progress.slice(-1)[0]),
+            lastCheckIn: obj.progress.length > 0 ? moment(obj.progress.slice(-1)[0]).format("MM/DD/YYYY") : "no check-ins",
+            created: moment(obj.created).format("MM/DD/YYYY")
         }
     }
 
