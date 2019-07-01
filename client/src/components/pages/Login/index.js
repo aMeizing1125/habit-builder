@@ -69,6 +69,7 @@ class Login extends Component{
                 if(res.data.username === credentials.username){
                     console.log("Login successful")
                     sessionStorage.setItem("habit-uid", res.data._id);
+                    sessionStorage.setItem("loggedIn", "true");
                     window.location.assign('/dashboard/habits');
                 }
                 else{
@@ -101,6 +102,7 @@ class Login extends Component{
         .then(res => {
             console.log(res.data);
             sessionStorage.setItem("habit-uid", res.data._id);
+            sessionStorage.setItem("loggedIn", "true");
             window.location.assign('/dashboard/habits');
         })
         .catch(err => console.log(err));
