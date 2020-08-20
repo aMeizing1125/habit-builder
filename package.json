@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/aMeizing1125/Habit-Builder#readme",
   "dependencies": {
-    "bcrypt": "^3.0.6",
+    "bcrypt": "^5.0.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "concurrently": "^4.1.0",
